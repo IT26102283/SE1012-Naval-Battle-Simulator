@@ -46,9 +46,25 @@ float deg_to_rad(float deg)
 	return deg *(PI/180.0f);
 }
 
+//calculate the distance between two 2D points
 float calculate_distance(float x1,float y1,float x2,float y2)
 {
 	return sqrtf((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+
+//calculate maximum horizontl projectile range for given velocity and angles
+float calculate_max_range(float v_max,float min_angle_deg,float max_angle_deg)
+{
+	float max_R = 0.0f;
+	for (float angle = min_angle_deg; angle<=max_angle_deg; angle +=0.5f)//check min_angle to max_angle by 0.5 degrees
+	{
+		float rad = deg_to_rad(angle);//convert deg to rad
+		float R = (v_max*v_max*sinf(2.0f*rad))/GRAVITY;// standard projectile range calculation formular
+		if (R > max_R){
+			max_R = R;//max_R update with new maximum range
+		}
+	}
+	return max_R;
 }
 
 
