@@ -40,6 +40,18 @@ int num_escorts = 10;
 Battleship battleship;
 EscortShip escort_ships[MAX_ESCORT_SHIPS];
 
+//convert angles from degrees to radians
+float deg_to_rad(float deg)
+{
+	return deg *(PI/180.0f);
+}
+
+float calculate_distance(float x1,float y1,float x2,float y2)
+{
+	return sqrtf((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+
+
 int main()
 {
     printf("Naval Battle Simulator Initialized. \n");
