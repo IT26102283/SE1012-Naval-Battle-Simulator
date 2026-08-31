@@ -110,7 +110,82 @@ void init_simulation()
 	//randomly get battleship position
 	battleship.x = ((float)rand() / RAND_MAX) * canvas_D;
 	battleship.y = ((float)rand() / RAND_MAX) * canvas_D;
-	battleship.is_destroyed = 0; 
+	battleship.is_destroyed = 0;
+
+
+	//Escort ship count inputs
+	printf("Enter number of Escort Ships (MAX=50) : ");
+	scanf("%d", &num_escorts);
+
+	if(num_escorts > MAX_ESCORT_SHIPS){
+		num_escorts = MAX_ESCORT_SHIPS;
+	}	
+	
+	
+	//Randomly generate escort ship details
+	for (int i = 0; i< num_escorts; i++){
+		escort_ships[i].id = i+1;
+		escort_ships[i].x = ((float)rand() /RAND_MAX) * canvas_D;
+		escort_ships[i].y = ((float)rand() /RAND_MAX) * canvas_D;
+		escort_ships[i].is_destroyed = 0;
+
+		int type_rand = rand() % 5;
+		switch (type_rand){
+			case 0:
+				escort_ships[i].type_code ='A';
+				snprintf(escort_ships[i].type_name, 30,"1936A-class Destroyer");
+				snprintf(escort_ships[i].gun_name, 30,"SK C/32 naval gun");
+				escort_ships[i].impact_power =0.08f;
+				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 30.0f;
+				escort_ships[i].max_ang =escort_ships[i].min_ang + 20.0f;
+				escort_ships[i].min_v =10.0f + ((float)rand() / RAND_MAX) * 20.0f;
+				escort_ships[i].max_v =1.2f*battleship.v_max;
+				break;
+			case 1:
+				escort_ships[i].type_code ='B';
+				snprintf(escort_ships[i].type_name, 30,"Gabbiano-class Corvette");
+				snprintf(escort_ships[i].gun_name, 30,"L/47 dual-purpose gun");
+				escort_ships[i].impact_power =0.06f;
+				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 30.0f;
+				escort_ships[i].max_ang =escort_ships[i].min_ang + 30.0f;
+				escort_ships[i].min_v =10.0f +((float)rand() /RAND_MAX) * 10.0f;
+				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
+				break;
+			case 2:
+				escort_ships[i].type_code ='C';
+				snprintf(escort_ships[i].type_name, 30,"Matsu-class Destroyer");
+				snprintf(escort_ships[i].gun_name, 30,"Type 89 dual-purpose gun");
+				escort_ships[i].impact_power =0.07f;
+				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 30.0f;
+				escort_ships[i].max_ang =escort_ships[i].min_ang + 25.0f;
+				escort_ships[i].min_v =10.0f +((float)rand() /RAND_MAX) * 10.0f;
+				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
+				break;
+			case 3:
+				escort_ships[i].type_code ='D';
+				snprintf(escort_ships[i].type_name, 30,"F-class Escort Ships");
+				snprintf(escort_ships[i].gun_name, 30,"SK C/32 naval gun");
+				escort_ships[i].impact_power =0.05f;
+				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 20.0f;
+				escort_ships[i].max_ang =escort_ships[i].min_ang + 50.0f;
+				escort_ships[i].min_v =10.0f +((float)rand() /RAND_MAX) * 10.0f;
+				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
+				break;
+			case 4:
+				escort_ships[i].type_code ='E';
+				snprintf(escort_ships[i].type_name, 30,"Japanese Kaibokan");
+				snprintf(escort_ships[i].gun_name, 30,"4.7 inch naval guns");
+				escort_ships[i].impact_power =0.04f;
+				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 10.0f;
+				escort_ships[i].max_ang =escort_ships[i].min_ang + 70.0f;
+				escort_ships[i].min_v =10.0f +((float)rand() /RAND_MAX) * 10.0f;
+				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
+				break;
+		}
+	}
+
+
+
 }
 
 
