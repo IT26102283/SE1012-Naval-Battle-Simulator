@@ -228,5 +228,10 @@ void init_simulation()
 int main()
 {
     printf("Naval Battle Simulator Initialized. \n");
+    srand(time(NULL));
+
+    //call simulation initialization & file create
+    init_simulation();
+
     return 0;
 }
