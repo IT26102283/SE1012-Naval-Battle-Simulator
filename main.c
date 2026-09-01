@@ -183,10 +183,46 @@ void init_simulation()
 				break;
 		}
 	}
+	
+	// Create & Open initial_config.txt file
+	FILE *fp = fopen("initial_config.txt", "w");
+	if (fp == NULL)
+	{
+		printf("Error creating initial_config.txt file!\n");
+		return;
+	}
 
+	//write canvas size and battleship parameters
+	fprintf(fp, "----INITIAL BATTLEFIELD CONFIGURATION----\n");
+	fprintf(fp, "Canvas Size (D): %.2f\n\n", canvas_D);
+	fprintf(fp, "[BATTLESHIP]\n");
+	fprintf(fp, "Type Code: %c\n", battleship.type_code);
+	fprintf(fp, "Type Name: %s\n", battleship.type_name);
+	fprintf(fp, "Gun Name : %s\n", battleship.gun_name);
+	fprintf(fp, "Position : (%.2f, %.2f)\n", battleship.x, battleship.y);
+	fprintf(fp, "V_max    : %.2f\n\n", battleship.v_max);
 
+	//write escort ships parameters
+	fprintf(fp, "[ESCORT SHIPS (Total: %d)]\n", num_escorts);
+	for (int i=0; i < num_escorts; i++)
+	{
+		fprintf(fp, "ID: %d | Code: %c | Name: %s | Position: (%.2f, %.2f) | Range V: [%.2f - %.2f] | Range Angles: [%.2f- %.2f] | Impact: %.2f\n",
+				escort_ships[i].id,
+				escort_ships[i].type_code,
+				escort_ships[i].type_name,
+				escort_ships[i].x,
+				escort_ships[i].y,
+				escort_ships[i].min_v,
+				escort_ships[i].max_v,
+				escort_ships[i].min_ang,
+				escort_ships[i].max_ang,
+				escort_ships[i].impact_power);
+	}
 
+	fclose(fp);
+	printf("\n[SUCCESS] Battlefield setup completed & initial_config.txt saved!\n");
 }
+
 
 
 int main()
