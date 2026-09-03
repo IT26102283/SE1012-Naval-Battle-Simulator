@@ -223,6 +223,40 @@ void init_simulation()
 	printf("\n[SUCCESS] Battlefield setup completed & initial_config.txt saved!\n");
 }
 
+void simulate_engagement()
+{
+	int total_hits = 0;
+	float total_damage = 0.0;
+
+	printf("---- BATTLE ENGAGEMENT SIMULATION ----\n");
+
+	for (int i = 0; i < num_escorts; i++)
+       	{
+		float dist = calculate_distance(battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y); // calculat the distance between battleship & escort ships
+		float angle_deg = escort_ships[i].min_ang + ((float)rand() / RAND_MAX) * (escort_ships[i].max_ang - escort_ships[i].min_ang);
+		float velocity = escort_ships[i].min_v + ((float)rand() / RAND_MAX) * (escort_ships[i].max_v - escort_ships[i].min_v);//randomly select angle and velocity
+		float angle_rad = deg_to_rad(angle_deg);
+		float max_range = calculate_max_range(velocity, angle_rad, GRAVITY);// conver ang to rad and calsulate max range
+		
+		printf("Escort Ship ID %d type %s :\n", escort_ships[i].id, escort_ships[i].type_name);
+		printf(" Distance to Battleship : %.2f m \n", dist);
+		printf(" Fired at velocity : %.2f m/s, Angle: %.2f deg \n", velocity, angle_deg );
+		printf(" Calculated Max Range : %.2f m \n", max_range);
+
+		if (dist <= max_range) {
+			printf(" RESULT: [DIRECT HIT!]\n");
+			total_hits++;
+			total_damage += escort_ships[i].impact_power;
+		}else{
+			printf(" RESULT: [MISSED - Out of Range]\n");
+		}
+	}
+
+	printf("BATTLE SUMMARY: \n");
+	printf("Total Escort Ships Engagement : %d\n", num_escorts);
+	printf("Total Successful Hits         : %d\n", total_hits);
+	printf("Accumlated Impact factor      : %.2f\n", total_damage);
+}
 
 
 int main()
@@ -232,6 +266,9 @@ int main()
 
     //call simulation initialization & file create
     init_simulation();
+
+    //Run Engagement Simulation Logic
+    simulate_engagement();
 
     return 0;
 }
