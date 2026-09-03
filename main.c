@@ -256,6 +256,45 @@ void simulate_engagement()
 	printf("Total Escort Ships Engagement : %d\n", num_escorts);
 	printf("Total Successful Hits         : %d\n", total_hits);
 	printf("Accumlated Impact factor      : %.2f\n", total_damage);
+
+	//Create and Open battle_log.txt file
+	FILE *log_file = fopen("battle_log.txt", "w");
+	if (log_file == NULL) {
+		printf("Error opening battle_log.txt file!\n");
+		return;
+	}
+
+	fprintf(log_file,">>>>>>> BATTLE ENGAGEMENT LOG FILE <<<<<<<\n");
+
+	for (int i=0; i < num_escorts; i++){
+		float dist = calculate_distance(battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y);
+		float angle_deg = escort_ships[i].min_ang + ((float)rand() / RAND_MAX) * (escort_ships[i].min_ang - escort_ships[i].min_ang);
+		float velocity = escort_ships[i].min_v + ((float)rand() / RAND_MAX) * (escort_ships[i].max_v - escort_ships[i].min_v);
+		float angle_rad = deg_to_rad(angle_deg);
+		float max_range = calculate_max_range(velocity, angle_rad, GRAVITY);
+
+		fprintf(log_file, "Escort Ship ID %d %s : \n", escort_ships[i].id, escort_ships[i].type_name);
+		fprintf(log_file, " Distance to Battleship : %.2f m\n", dist);
+		fprintf(log_file, " Fired Velocity : %.2f m/s, Angle : %.2f deg\n", velocity, angle_deg);
+		fprintf(log_file, " Max Projectile Range : %.2f m\n", max_range);
+		if (dist <= max_range){
+			fprintf(log_file, " RESULT: [DIRECT HIT!]\n");
+			total_hits++;
+			total_damage += escort_ships[i].impact_power;
+		}else{
+			fprintf(log_file, " RESULT: [MISSED - Out of Range]\n");
+		}
+	}
+
+	fprintf(log_file, "-BATTLE SUMMARY: \n");
+	fprintf(log_file, "Total Escort Ships Engagement : %d\n", num_escorts);
+	fprintf(log_file, "Total Successful Hits         : %d\n", total_hits);
+	fprintf(log_file, "Accumulated Impact Factor     : %.2f\n", total_damage);
+
+	fclose(log_file);
+	printf("\n[SUCCESS] Engagement process complete & battle_log.txt saved!\n");
+
+
 }
 
 
