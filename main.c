@@ -52,20 +52,19 @@ float calculate_distance(float x1,float y1,float x2,float y2)
 	return sqrtf((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 
-//calculate maximum horizontl projectile range for given velocity and angles
-float calculate_max_range(float v_max,float min_angle_deg,float max_angle_deg)
+//calculate maximum rangge of battleship
+float calculate_battleship_range()
 {
-	float max_R = 0.0f;
-	for (float angle = min_angle_deg; angle<=max_angle_deg; angle +=0.5f)//check min_angle to max_angle by 0.5 degrees
-	{
-		float rad = deg_to_rad(angle);//convert deg to rad
-		float R = (v_max*v_max*sinf(2.0f*rad))/GRAVITY;// standard projectile range calculation formular
-		if (R > max_R){
-			max_R = R;//max_R update with new maximum range
-		}
-	}
-	return max_R;
+	return(battleship.v_max * battleship.v_max) / GRAVITY;
 }
+
+//calculate projective range
+float calculate_range(float velocity,float angle)
+{
+	float angle_rad = deg_to_rad(angle);
+	return(velocity * velocity * sinf(2.0f * angle_rad)) / GRAVITY;
+}
+
 
 //Initialize user inputs and Setup battlefir=eld coordinates
 void init_simulation()
@@ -132,9 +131,9 @@ void init_simulation()
 		int type_rand = rand() % 5;
 		switch (type_rand){
 			case 0:
-				escort_ships[i].type_code ='A';
+				escort_ships[i].type_code = 'A';
 				snprintf(escort_ships[i].type_name, 30,"1936A-class Destroyer");
-				snprintf(escort_ships[i].gun_name, 30,"SK C/32 naval gun");
+				snprintf(escort_ships[i].gun_name, 30,"SK C/34 naval gun");
 				escort_ships[i].impact_power =0.08f;
 				escort_ships[i].min_ang =((float)rand() / RAND_MAX) * 30.0f;
 				escort_ships[i].max_ang =escort_ships[i].min_ang + 20.0f;
@@ -142,7 +141,7 @@ void init_simulation()
 				escort_ships[i].max_v =1.2f*battleship.v_max;
 				break;
 			case 1:
-				escort_ships[i].type_code ='B';
+				escort_ships[i].type_code = 'B';
 				snprintf(escort_ships[i].type_name, 30,"Gabbiano-class Corvette");
 				snprintf(escort_ships[i].gun_name, 30,"L/47 dual-purpose gun");
 				escort_ships[i].impact_power =0.06f;
@@ -152,7 +151,7 @@ void init_simulation()
 				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
 				break;
 			case 2:
-				escort_ships[i].type_code ='C';
+				escort_ships[i].type_code = 'C';
 				snprintf(escort_ships[i].type_name, 30,"Matsu-class Destroyer");
 				snprintf(escort_ships[i].gun_name, 30,"Type 89 dual-purpose gun");
 				escort_ships[i].impact_power =0.07f;
@@ -162,7 +161,7 @@ void init_simulation()
 				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
 				break;
 			case 3:
-				escort_ships[i].type_code ='D';
+				escort_ships[i].type_code = 'D';
 				snprintf(escort_ships[i].type_name, 30,"F-class Escort Ships");
 				snprintf(escort_ships[i].gun_name, 30,"SK C/32 naval gun");
 				escort_ships[i].impact_power =0.05f;
@@ -172,7 +171,7 @@ void init_simulation()
 				escort_ships[i].max_v =((float)rand() / RAND_MAX) * battleship.v_max;
 				break;
 			case 4:
-				escort_ships[i].type_code ='E';
+				escort_ships[i].type_code = 'E';
 				snprintf(escort_ships[i].type_name, 30,"Japanese Kaibokan");
 				snprintf(escort_ships[i].gun_name, 30,"4.7 inch naval guns");
 				escort_ships[i].impact_power =0.04f;
@@ -223,78 +222,133 @@ void init_simulation()
 	printf("\n[SUCCESS] Battlefield setup completed & initial_config.txt saved!\n");
 }
 
-void simulate_engagement()
+void simulate_part1A()
 {
+	int sinking_ship_id = 0;
 	int total_hits = 0;
-	float total_damage = 0.0;
+	float battle_end_time = 0.0f;
 
-	printf("---- BATTLE ENGAGEMENT SIMULATION ----\n");
+	printf("\n---- BATTLE SIMULATION ----\n");
 
-	for (int i = 0; i < num_escorts; i++)
-       	{
-		float dist = calculate_distance(battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y); // calculat the distance between battleship & escort ships
-		float angle_deg = escort_ships[i].min_ang + ((float)rand() / RAND_MAX) * (escort_ships[i].max_ang - escort_ships[i].min_ang);
-		float velocity = escort_ships[i].min_v + ((float)rand() / RAND_MAX) * (escort_ships[i].max_v - escort_ships[i].min_v);//randomly select angle and velocity
-		float angle_rad = deg_to_rad(angle_deg);
-		float max_range = calculate_max_range(velocity, angle_rad, GRAVITY);// conver ang to rad and calsulate max range
-		
-		printf("Escort Ship ID %d type %s :\n", escort_ships[i].id, escort_ships[i].type_name);
-		printf(" Distance to Battleship : %.2f m \n", dist);
-		printf(" Fired at velocity : %.2f m/s, Angle: %.2f deg \n", velocity, angle_deg );
-		printf(" Calculated Max Range : %.2f m \n", max_range);
+	//escort ships attack the battleship
+	for (int i=0; i< num_escorts; i++)
+	{
+		float distance;
 
-		if (dist <= max_range) {
-			printf(" RESULT: [DIRECT HIT!]\n");
-			total_hits++;
-			total_damage += escort_ships[i].impact_power;
-		}else{
-			printf(" RESULT: [MISSED - Out of Range]\n");
+		distance = calculate_distance(battleship.x,battleship.y,escort_ships[i].x,escort_ships[i].y);
+		float min_range = calculate_range(escort_ships[i].min_v,escort_ships[i].min_ang);
+		float max_range = calculate_range(escort_ships[i].max_v,escort_ships[i].max_ang);
+
+		if(distance >= min_range && distance <= max_range)
+		{
+			battleship.is_destroyed = 1;
+			sinking_ship_id = escort_ships[i].id;
+
+			printf("\nBattleship was hit by E%d.\n", sinking_ship_id);
+			printf("Battleship is destroyed.\n");
+			break;
 		}
 	}
+	if(battleship.is_destroyed == 1)
+	{
+		FILE *fp = fopen("battle_log.txt", "w");
+		if(fp !=NULL)
+		{
+			fprintf(fp, " ---- PART 1-A BATTLE RESULT ----\n");
+			fprintf(fp, "Battle Status : DESTROYED\n");
+			fprintf(fp, "E ship that sank B : E%d\n", sinking_ship_id);
 
-	printf("BATTLE SUMMARY: \n");
-	printf("Total Escort Ships Engagement : %d\n", num_escorts);
-	printf("Total Successful Hits         : %d\n", total_hits);
-	printf("Accumlated Impact factor      : %.2f\n", total_damage);
+			fclose(fp);
+		}
+	}
+	else
+	{
+		float battleship_range = calculate_battleship_range();
 
-	//Create and Open battle_log.txt file
-	FILE *log_file = fopen("battle_log.txt", "w");
-	if (log_file == NULL) {
-		printf("Error opening battle_log.txt file!\n");
+		printf("\nBattleship survived the E attacks.\n");
+		printf("Battleship Attack Range : %.2f m\n", battleship_range);
+
+		//battleship attack escort ships
+		for(int i=0; i < num_escorts; i++)
+		{
+			float distance;
+			distance = calculate_distance(battleship.x,battleship.y,escort_ships[i].x,escort_ships[i].y);
+			if (distance <= battleship_range)
+			{
+				escort_ships[i].is_destroyed = 1;
+				total_hits++;
+				
+				float angle = 45.0f;
+				float velocity = battleship.v_max;
+				
+				float time = (2.0f * velocity * sinf(deg_to_rad(angle)))/GRAVITY;
+				
+				if(time > battle_end_time)
+				{
+					battle_end_time = time;
+				}
+				printf("\nNumber of E ships hit : %d\n", total_hits);
+				printf("Battle and time : %.2f seconds\n",battle_end_time);
+				
+				FILE *fp = fopen("battle_results.txt", "w");
+				
+				if (fp != NULL)
+				{
+					fprintf(fp, "---- PART 1-A RESULT ----\n");
+					fprintf(fp, "Battleship Status : SURVIVED");
+					fprintf(fp, "Number of E ships hit : %d\n",total_hits);
+					
+					for (int i = 0; i < num_escorts; i++)
+					{
+						if(escort_ships[i].is_destroyed == 1)
+						{
+							fprintf(fp,"E%d\n", escort_ships[i].id);
+						}
+					}
+					fprintf(fp, "\nBattle End Time: %.2f seconds\n", battle_end_time);
+					
+					fclose(fp);
+				}
+			}
+		}
+	}
+}
+
+void save_final_conditions()
+{
+	FILE *fp = fopen("final_conditions.txt", "w");
+
+	if (fp == NULL)
+	{
+		printf("Error creating final_conditions.txt\n");
 		return;
 	}
+	fprintf(fp, "---- FINAL BATTLEFIELD CONDITIONS ----\n");
+	fprintf(fp, "[BATTLESHIP]\n");
+	fprintf(fp, "Position: (%.2f, %.2f)\n", battleship.x,battleship.y);
+	if (battleship.is_destroyed == 1)
+	{
+		fprintf(fp, "Status : DESTROYED\n");
+	}
+	else{
+		fprintf(fp, "Status : ALIVE\n");
+	}
+	fprintf(fp, "[ESCORT SHIPS]\n");
 
-	fprintf(log_file,">>>>>>> BATTLE ENGAGEMENT LOG FILE <<<<<<<\n");
-
-	for (int i=0; i < num_escorts; i++){
-		float dist = calculate_distance(battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y);
-		float angle_deg = escort_ships[i].min_ang + ((float)rand() / RAND_MAX) * (escort_ships[i].min_ang - escort_ships[i].min_ang);
-		float velocity = escort_ships[i].min_v + ((float)rand() / RAND_MAX) * (escort_ships[i].max_v - escort_ships[i].min_v);
-		float angle_rad = deg_to_rad(angle_deg);
-		float max_range = calculate_max_range(velocity, angle_rad, GRAVITY);
-
-		fprintf(log_file, "Escort Ship ID %d %s : \n", escort_ships[i].id, escort_ships[i].type_name);
-		fprintf(log_file, " Distance to Battleship : %.2f m\n", dist);
-		fprintf(log_file, " Fired Velocity : %.2f m/s, Angle : %.2f deg\n", velocity, angle_deg);
-		fprintf(log_file, " Max Projectile Range : %.2f m\n", max_range);
-		if (dist <= max_range){
-			fprintf(log_file, " RESULT: [DIRECT HIT!]\n");
-			total_hits++;
-			total_damage += escort_ships[i].impact_power;
-		}else{
-			fprintf(log_file, " RESULT: [MISSED - Out of Range]\n");
+	for(int i = 0; i<num_escorts; i++)
+	{
+		if(escort_ships[i].is_destroyed == 1)
+		{
+			fprintf(fp, "E%d | Type: E%c | Status: DESTROYED\n", escort_ships[i].id,escort_ships[i].type_code);
+		}
+		else
+		{
+			fprintf(fp, "E%d | Type: E%c | Status: ALIVE\n", escort_ships[i].id,escort_ships[i].type_code);
 		}
 	}
+	fclose(fp);
 
-	fprintf(log_file, "-BATTLE SUMMARY: \n");
-	fprintf(log_file, "Total Escort Ships Engagement : %d\n", num_escorts);
-	fprintf(log_file, "Total Successful Hits         : %d\n", total_hits);
-	fprintf(log_file, "Accumulated Impact Factor     : %.2f\n", total_damage);
-
-	fclose(log_file);
-	printf("\n[SUCCESS] Engagement process complete & battle_log.txt saved!\n");
-
-
+	printf("[SUCCESS] final_conditions.txt saved.\n");
 }
 
 
@@ -306,8 +360,12 @@ int main()
     //call simulation initialization & file create
     init_simulation();
 
-    //Run Engagement Simulation Logic
-    simulate_engagement();
+    //Run Simulation of part 1A Logic
+    simulate_part1A();
+
+    //save final conditionts file
+    save_final_conditions();
+
 
     return 0;
 }

@@ -1,0 +1,47 @@
+---- FINAL BATTLEFIELD CONDITIONS ----
+[BATTLESHIP]
+Position: (171.13, 287.70)
+Status : DESTROYED
+[ESCORT SHIPS]
+E1 | Type: EE | Status: ALIVE
+E2 | Type: ED | Status: ALIVE
+E3 | Type: ED | Status: ALIVE
+E4 | Type: EA | Status: ALIVE
+E5 | Type: EE | Status: ALIVE
+E6 | Type: ED | Status: ALIVE
+E7 | Type: ED | Status: ALIVE
+E8 | Type: EB | Status: ALIVE
+E9 | Type: EC | Status: ALIVE
+E10 | Type: ED | Status: ALIVE
+E11 | Type: EA | Status: ALIVE
+E12 | Type: EB | Status: ALIVE
+E13 | Type: EA | Status: ALIVE
+E14 | Type: ED | Status: ALIVE
+E15 | Type: ED | Status: ALIVE
+E16 | Type: EE | Status: ALIVE
+E17 | Type: EE | Status: ALIVE
+E18 | Type: EB | Status: ALIVE
+E19 | Type: EE | Status: ALIVE
+E20 | Type: EC | Status: ALIVE
+E21 | Type: EE | Status: ALIVE
+E22 | Type: EB | Status: ALIVE
+E23 | Type: EE | Status: ALIVE
+E24 | Type: EA | Status: ALIVE
+E25 | Type: EC | Status: ALIVE
+E26 | Type: EB | Status: ALIVE
+E27 | Type: EB | Status: ALIVE
+E28 | Type: ED | Status: ALIVE
+E29 | Type: EC | Status: ALIVE
+E30 | Type: ED | Status: ALIVE
+E31 | Type: EA | Status: ALIVE
+E32 | Type: ED | Status: ALIVE
+E33 | Type: EC | Status: ALIVE
+E34 | Type: EE | Status: ALIVE
+E35 | Type: ED | Status: ALIVE
+E36 | Type: ED | Status: ALIVE
+E37 | Type: ED | Status: ALIVE
+E38 | Type: ED | Status: ALIVE
+E39 | Type: EA | Status: ALIVE
+E40 | Type: EB | Status: ALIVE
+E41 | Type: EA | Status: ALIVE
+E42 | Type: ED | Status: ALIVE

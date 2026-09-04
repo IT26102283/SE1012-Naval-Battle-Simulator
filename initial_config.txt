@@ -1,56 +1,53 @@
 ----INITIAL BATTLEFIELD CONFIGURATION----
-Canvas Size (D): 500.00
+Canvas Size (D): 460.00
 
 [BATTLESHIP]
-Type Code: U
-Type Name: USS Iowa (BB-61)
-Gun Name : 50-caliber Mark 7 gun
-Position : (128.31, 9.20)
-V_max    : 52.00
+Type Code: M
+Type Name: MS King George V
+Gun Name : (356mm) Mark VII gun
+Position : (171.13, 287.70)
+V_max    : 58.00
 
-[ESCORT SHIPS (Total: 45)]
-ID: 1 | Code: D | Name: F-class Escort Ships | Position: (311.61, 141.17) | Range V: [13.38 - 9.50] | Range Angles: [19.18- 69.18] | Impact: 0.05
-ID: 2 | Code: E | Name: Japanese Kaibokan | Position: (228.33, 283.95) | Range V: [14.42 - 36.42] | Range Angles: [7.82- 77.82] | Impact: 0.04
-ID: 3 | Code: A | Name: 1936A-class Destroyer | Position: (164.51, 354.04) | Range V: [16.20 - 62.40] | Range Angles: [19.65- 39.65] | Impact: 0.08
-ID: 4 | Code: B | Name: Gabbiano-class Corvette | Position: (336.69, 317.17) | Range V: [17.98 - 12.77] | Range Angles: [27.18- 57.18] | Impact: 0.06
-ID: 5 | Code: A | Name: 1936A-class Destroyer | Position: (228.16, 233.80) | Range V: [27.06 - 62.40] | Range Angles: [5.60- 25.60] | Impact: 0.08
-ID: 6 | Code: E | Name: Japanese Kaibokan | Position: (161.00, 221.65) | Range V: [17.26 - 8.67] | Range Angles: [9.45- 79.45] | Impact: 0.04
-ID: 7 | Code: A | Name: 1936A-class Destroyer | Position: (452.14, 31.87) | Range V: [22.63 - 62.40] | Range Angles: [10.83- 30.83] | Impact: 0.08
-ID: 8 | Code: A | Name: 1936A-class Destroyer | Position: (139.12, 71.25) | Range V: [19.43 - 62.40] | Range Angles: [29.36- 49.36] | Impact: 0.08
-ID: 9 | Code: D | Name: F-class Escort Ships | Position: (390.72, 343.82) | Range V: [13.61 - 39.56] | Range Angles: [1.83- 51.83] | Impact: 0.05
-ID: 10 | Code: B | Name: Gabbiano-class Corvette | Position: (36.37, 133.50) | Range V: [17.23 - 1.38] | Range Angles: [9.55- 39.55] | Impact: 0.06
-ID: 11 | Code: B | Name: Gabbiano-class Corvette | Position: (71.96, 455.00) | Range V: [13.53 - 39.05] | Range Angles: [13.98- 43.98] | Impact: 0.06
-ID: 12 | Code: B | Name: Gabbiano-class Corvette | Position: (205.58, 39.47) | Range V: [11.43 - 13.88] | Range Angles: [9.46- 39.46] | Impact: 0.06
-ID: 13 | Code: E | Name: Japanese Kaibokan | Position: (338.20, 387.17) | Range V: [18.48 - 27.24] | Range Angles: [8.19- 78.19] | Impact: 0.04
-ID: 14 | Code: B | Name: Gabbiano-class Corvette | Position: (145.22, 314.57) | Range V: [17.21 - 29.77] | Range Angles: [12.51- 42.51] | Impact: 0.06
-ID: 15 | Code: C | Name: Matsu-class Destroyer | Position: (88.83, 396.69) | Range V: [11.12 - 29.26] | Range Angles: [22.10- 47.10] | Impact: 0.07
-ID: 16 | Code: E | Name: Japanese Kaibokan | Position: (381.64, 127.77) | Range V: [17.21 - 42.96] | Range Angles: [6.43- 76.43] | Impact: 0.04
-ID: 17 | Code: A | Name: 1936A-class Destroyer | Position: (196.88, 66.32) | Range V: [18.96 - 62.40] | Range Angles: [9.34- 29.34] | Impact: 0.08
-ID: 18 | Code: B | Name: Gabbiano-class Corvette | Position: (23.85, 289.08) | Range V: [11.23 - 49.06] | Range Angles: [24.66- 54.66] | Impact: 0.06
-ID: 19 | Code: C | Name: Matsu-class Destroyer | Position: (334.87, 323.50) | Range V: [18.58 - 33.84] | Range Angles: [8.97- 33.97] | Impact: 0.07
-ID: 20 | Code: A | Name: 1936A-class Destroyer | Position: (9.76, 215.42) | Range V: [15.41 - 62.40] | Range Angles: [24.39- 44.39] | Impact: 0.08
-ID: 21 | Code: A | Name: 1936A-class Destroyer | Position: (282.51, 462.26) | Range V: [13.60 - 62.40] | Range Angles: [9.85- 29.85] | Impact: 0.08
-ID: 22 | Code: A | Name: 1936A-class Destroyer | Position: (152.89, 485.58) | Range V: [17.30 - 62.40] | Range Angles: [3.96- 23.96] | Impact: 0.08
-ID: 23 | Code: A | Name: 1936A-class Destroyer | Position: (17.09, 18.43) | Range V: [11.69 - 62.40] | Range Angles: [14.47- 34.47] | Impact: 0.08
-ID: 24 | Code: C | Name: Matsu-class Destroyer | Position: (127.21, 303.37) | Range V: [15.50 - 29.97] | Range Angles: [11.33- 36.33] | Impact: 0.07
-ID: 25 | Code: C | Name: Matsu-class Destroyer | Position: (12.33, 391.97) | Range V: [14.35 - 46.53] | Range Angles: [26.49- 51.49] | Impact: 0.07
-ID: 26 | Code: D | Name: F-class Escort Ships | Position: (156.95, 131.50) | Range V: [18.28 - 32.87] | Range Angles: [11.68- 61.68] | Impact: 0.05
-ID: 27 | Code: A | Name: 1936A-class Destroyer | Position: (208.59, 78.16) | Range V: [12.55 - 62.40] | Range Angles: [21.69- 41.69] | Impact: 0.08
-ID: 28 | Code: E | Name: Japanese Kaibokan | Position: (356.89, 427.41) | Range V: [18.92 - 8.77] | Range Angles: [7.48- 77.48] | Impact: 0.04
-ID: 29 | Code: A | Name: 1936A-class Destroyer | Position: (115.11, 488.13) | Range V: [27.66 - 62.40] | Range Angles: [25.11- 45.11] | Impact: 0.08
-ID: 30 | Code: C | Name: Matsu-class Destroyer | Position: (400.37, 193.55) | Range V: [11.71 - 17.39] | Range Angles: [24.76- 49.76] | Impact: 0.07
-ID: 31 | Code: D | Name: F-class Escort Ships | Position: (354.23, 302.84) | Range V: [18.69 - 48.72] | Range Angles: [0.45- 50.45] | Impact: 0.05
-ID: 32 | Code: B | Name: Gabbiano-class Corvette | Position: (303.27, 348.35) | Range V: [18.53 - 19.83] | Range Angles: [0.71- 30.71] | Impact: 0.06
-ID: 33 | Code: C | Name: Matsu-class Destroyer | Position: (373.35, 490.25) | Range V: [14.73 - 43.84] | Range Angles: [18.05- 43.05] | Impact: 0.07
-ID: 34 | Code: D | Name: F-class Escort Ships | Position: (246.61, 320.79) | Range V: [10.65 - 47.33] | Range Angles: [9.39- 59.39] | Impact: 0.05
-ID: 35 | Code: A | Name: 1936A-class Destroyer | Position: (176.17, 432.69) | Range V: [23.82 - 62.40] | Range Angles: [24.35- 44.35] | Impact: 0.08
-ID: 36 | Code: A | Name: 1936A-class Destroyer | Position: (234.20, 73.02) | Range V: [17.51 - 62.40] | Range Angles: [2.22- 22.22] | Impact: 0.08
-ID: 37 | Code: D | Name: F-class Escort Ships | Position: (210.82, 471.38) | Range V: [16.39 - 45.82] | Range Angles: [0.56- 50.56] | Impact: 0.05
-ID: 38 | Code: E | Name: Japanese Kaibokan | Position: (25.96, 246.24) | Range V: [14.73 - 18.60] | Range Angles: [7.99- 77.99] | Impact: 0.04
-ID: 39 | Code: E | Name: Japanese Kaibokan | Position: (200.08, 472.95) | Range V: [15.87 - 14.25] | Range Angles: [8.93- 78.93] | Impact: 0.04
-ID: 40 | Code: B | Name: Gabbiano-class Corvette | Position: (181.42, 326.07) | Range V: [15.18 - 25.04] | Range Angles: [21.46- 51.46] | Impact: 0.06
-ID: 41 | Code: E | Name: Japanese Kaibokan | Position: (263.37, 104.15) | Range V: [16.08 - 1.25] | Range Angles: [6.73- 76.73] | Impact: 0.04
-ID: 42 | Code: D | Name: F-class Escort Ships | Position: (24.02, 14.60) | Range V: [10.57 - 31.53] | Range Angles: [7.20- 57.20] | Impact: 0.05
-ID: 43 | Code: C | Name: Matsu-class Destroyer | Position: (120.74, 54.64) | Range V: [19.08 - 29.73] | Range Angles: [15.12- 40.12] | Impact: 0.07
-ID: 44 | Code: D | Name: F-class Escort Ships | Position: (430.84, 154.03) | Range V: [12.01 - 5.47] | Range Angles: [1.25- 51.25] | Impact: 0.05
-ID: 45 | Code: C | Name: Matsu-class Destroyer | Position: (168.20, 282.14) | Range V: [12.79 - 14.29] | Range Angles: [15.62- 40.62] | Impact: 0.07
+[ESCORT SHIPS (Total: 42)]
+ID: 1 | Code: E | Name: Japanese Kaibokan | Position: (453.36, 195.16) | Range V: [18.28 - 10.01] | Range Angles: [6.91- 76.91] | Impact: 0.04
+ID: 2 | Code: D | Name: F-class Escort Ships | Position: (73.88, 333.07) | Range V: [16.38 - 44.60] | Range Angles: [2.97- 52.97] | Impact: 0.05
+ID: 3 | Code: D | Name: F-class Escort Ships | Position: (250.07, 335.14) | Range V: [16.25 - 56.43] | Range Angles: [4.82- 54.82] | Impact: 0.05
+ID: 4 | Code: A | Name: 1936A-class Destroyer | Position: (378.37, 250.57) | Range V: [18.35 - 69.60] | Range Angles: [28.08- 48.08] | Impact: 0.08
+ID: 5 | Code: E | Name: Japanese Kaibokan | Position: (201.70, 109.24) | Range V: [13.61 - 3.83] | Range Angles: [9.35- 79.35] | Impact: 0.04
+ID: 6 | Code: D | Name: F-class Escort Ships | Position: (141.36, 453.65) | Range V: [16.34 - 43.08] | Range Angles: [14.63- 64.63] | Impact: 0.05
+ID: 7 | Code: D | Name: F-class Escort Ships | Position: (257.34, 371.20) | Range V: [15.69 - 3.00] | Range Angles: [5.67- 55.67] | Impact: 0.05
+ID: 8 | Code: B | Name: Gabbiano-class Corvette | Position: (423.92, 155.46) | Range V: [12.74 - 48.51] | Range Angles: [19.50- 49.50] | Impact: 0.06
+ID: 9 | Code: C | Name: Matsu-class Destroyer | Position: (126.55, 113.40) | Range V: [15.48 - 34.51] | Range Angles: [24.59- 49.59] | Impact: 0.07
+ID: 10 | Code: D | Name: F-class Escort Ships | Position: (109.10, 453.60) | Range V: [19.21 - 11.21] | Range Angles: [6.61- 56.61] | Impact: 0.05
+ID: 11 | Code: A | Name: 1936A-class Destroyer | Position: (182.37, 105.19) | Range V: [29.20 - 69.60] | Range Angles: [13.44- 33.44] | Impact: 0.08
+ID: 12 | Code: B | Name: Gabbiano-class Corvette | Position: (374.35, 87.76) | Range V: [10.94 - 46.58] | Range Angles: [18.62- 48.62] | Impact: 0.06
+ID: 13 | Code: A | Name: 1936A-class Destroyer | Position: (87.31, 67.13) | Range V: [24.83 - 69.60] | Range Angles: [15.83- 35.83] | Impact: 0.08
+ID: 14 | Code: D | Name: F-class Escort Ships | Position: (172.46, 368.62) | Range V: [10.48 - 13.72] | Range Angles: [13.00- 63.00] | Impact: 0.05
+ID: 15 | Code: D | Name: F-class Escort Ships | Position: (216.12, 273.93) | Range V: [15.82 - 38.51] | Range Angles: [14.14- 64.14] | Impact: 0.05
+ID: 16 | Code: E | Name: Japanese Kaibokan | Position: (17.24, 231.35) | Range V: [17.32 - 2.13] | Range Angles: [4.34- 74.34] | Impact: 0.04
+ID: 17 | Code: E | Name: Japanese Kaibokan | Position: (405.68, 318.25) | Range V: [12.12 - 27.33] | Range Angles: [0.73- 70.73] | Impact: 0.04
+ID: 18 | Code: B | Name: Gabbiano-class Corvette | Position: (76.76, 6.76) | Range V: [17.39 - 10.95] | Range Angles: [9.38- 39.38] | Impact: 0.06
+ID: 19 | Code: E | Name: Japanese Kaibokan | Position: (24.91, 52.61) | Range V: [17.64 - 2.21] | Range Angles: [6.32- 76.32] | Impact: 0.04
+ID: 20 | Code: C | Name: Matsu-class Destroyer | Position: (399.41, 107.73) | Range V: [19.41 - 12.48] | Range Angles: [20.99- 45.99] | Impact: 0.07
+ID: 21 | Code: E | Name: Japanese Kaibokan | Position: (167.35, 450.19) | Range V: [14.13 - 26.08] | Range Angles: [2.21- 72.21] | Impact: 0.04
+ID: 22 | Code: B | Name: Gabbiano-class Corvette | Position: (118.57, 135.47) | Range V: [13.67 - 20.48] | Range Angles: [3.25- 33.25] | Impact: 0.06
+ID: 23 | Code: E | Name: Japanese Kaibokan | Position: (266.59, 245.66) | Range V: [18.47 - 6.22] | Range Angles: [2.41- 72.41] | Impact: 0.04
+ID: 24 | Code: A | Name: 1936A-class Destroyer | Position: (197.56, 414.46) | Range V: [20.66 - 69.60] | Range Angles: [12.59- 32.59] | Impact: 0.08
+ID: 25 | Code: C | Name: Matsu-class Destroyer | Position: (453.54, 210.58) | Range V: [10.91 - 5.85] | Range Angles: [6.60- 31.60] | Impact: 0.07
+ID: 26 | Code: B | Name: Gabbiano-class Corvette | Position: (74.21, 141.01) | Range V: [10.25 - 39.77] | Range Angles: [4.20- 34.20] | Impact: 0.06
+ID: 27 | Code: B | Name: Gabbiano-class Corvette | Position: (254.20, 218.22) | Range V: [16.16 - 3.00] | Range Angles: [25.41- 55.41] | Impact: 0.06
+ID: 28 | Code: D | Name: F-class Escort Ships | Position: (98.58, 445.75) | Range V: [13.37 - 50.57] | Range Angles: [14.97- 64.97] | Impact: 0.05
+ID: 29 | Code: C | Name: Matsu-class Destroyer | Position: (273.79, 204.25) | Range V: [16.66 - 41.82] | Range Angles: [14.89- 39.89] | Impact: 0.07
+ID: 30 | Code: D | Name: F-class Escort Ships | Position: (13.33, 299.72) | Range V: [18.72 - 15.68] | Range Angles: [8.60- 58.60] | Impact: 0.05
+ID: 31 | Code: A | Name: 1936A-class Destroyer | Position: (244.22, 15.20) | Range V: [13.46 - 69.60] | Range Angles: [29.87- 49.87] | Impact: 0.08
+ID: 32 | Code: D | Name: F-class Escort Ships | Position: (276.68, 313.37) | Range V: [16.25 - 33.22] | Range Angles: [1.52- 51.52] | Impact: 0.05
+ID: 33 | Code: C | Name: Matsu-class Destroyer | Position: (318.23, 311.16) | Range V: [13.08 - 31.06] | Range Angles: [19.82- 44.82] | Impact: 0.07
+ID: 34 | Code: E | Name: Japanese Kaibokan | Position: (458.90, 82.64) | Range V: [14.81 - 36.36] | Range Angles: [4.42- 74.42] | Impact: 0.04
+ID: 35 | Code: D | Name: F-class Escort Ships | Position: (49.32, 93.00) | Range V: [13.81 - 4.98] | Range Angles: [15.18- 65.18] | Impact: 0.05
+ID: 36 | Code: D | Name: F-class Escort Ships | Position: (290.03, 299.61) | Range V: [12.28 - 35.52] | Range Angles: [13.27- 63.27] | Impact: 0.05
+ID: 37 | Code: D | Name: F-class Escort Ships | Position: (384.83, 381.63) | Range V: [19.05 - 53.26] | Range Angles: [11.24- 61.24] | Impact: 0.05
+ID: 38 | Code: D | Name: F-class Escort Ships | Position: (62.11, 274.75) | Range V: [12.58 - 52.34] | Range Angles: [18.44- 68.44] | Impact: 0.05
+ID: 39 | Code: A | Name: 1936A-class Destroyer | Position: (210.48, 117.63) | Range V: [23.95 - 69.60] | Range Angles: [17.65- 37.65] | Impact: 0.08
+ID: 40 | Code: B | Name: Gabbiano-class Corvette | Position: (259.06, 98.93) | Range V: [18.71 - 32.67] | Range Angles: [22.96- 52.96] | Impact: 0.06
+ID: 41 | Code: A | Name: 1936A-class Destroyer | Position: (67.35, 440.13) | Range V: [21.47 - 69.60] | Range Angles: [23.93- 43.93] | Impact: 0.08
+ID: 42 | Code: D | Name: F-class Escort Ships | Position: (394.39, 11.91) | Range V: [18.56 - 27.81] | Range Angles: [13.88- 63.88] | Impact: 0.05
