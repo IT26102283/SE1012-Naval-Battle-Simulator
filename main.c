@@ -20,6 +20,7 @@ typedef struct
 	float max_ang;
 	float min_v;
 	float max_v;
+	float time_to_hit;
 	int is_destroyed;//logically alive or not
 }EscortShip;
 
@@ -32,6 +33,10 @@ typedef struct
 	float x, y;
 	float v_max;
 	int is_destroyed;//logically alive or not
+	
+	//for add path
+	float path_x[50];
+	float path_y[50];
 }Battleship;
 
 //Global Variables
@@ -39,6 +44,7 @@ float canvas_D = 1000.0f;
 int num_escorts = 10;
 Battleship battleship;
 EscortShip escort_ships[MAX_ESCORT_SHIPS];
+int k;
 
 //convert angles from degrees to radians
 float deg_to_rad(float deg)
@@ -110,6 +116,19 @@ void init_simulation()
 	battleship.x = ((float)rand() / RAND_MAX) * canvas_D;
 	battleship.y = ((float)rand() / RAND_MAX) * canvas_D;
 	battleship.is_destroyed = 0;
+
+	printf("Enter number of path points for Battleship(1-50) : ");
+	scanf("%d", &k);
+
+	if (k>50)
+	{
+		k = 50;
+	}
+	for (int i = 0; i < k; i++)
+	{
+		battleship.path_x[i] = ((float)rand() / RAND_MAX) * canvas_D;
+		battleship.path_y[i] = ((float)rand() / RAND_MAX) * canvas_D;
+	}
 
 
 	//Escort ship count inputs
@@ -200,6 +219,14 @@ void init_simulation()
 	fprintf(fp, "Gun Name : %s\n", battleship.gun_name);
 	fprintf(fp, "Position : (%.2f, %.2f)\n", battleship.x, battleship.y);
 	fprintf(fp, "V_max    : %.2f\n\n", battleship.v_max);
+	fprintf(fp, "[BATTLESHIP PATH]\n");
+
+	for(int i = 0; i < k ; i++)
+	{
+		fprintf(fp,"Point %d : (%.2f, %.2f)\n", i+1, battleship.path_x[i], battleship.path_y[i]);
+	}
+	fprintf(fp, "\n");
+
 
 	//write escort ships parameters
 	fprintf(fp, "[ESCORT SHIPS (Total: %d)]\n", num_escorts);
@@ -255,12 +282,18 @@ void simulate_part1A()
 		if(fp !=NULL)
 		{
 			fprintf(fp, " ---- PART 1-A BATTLE RESULT ----\n");
-			fprintf(fp, "Battle Status : DESTROYED\n");
+			fprintf(fp, "BattleShip Status : DESTROYED\n");
 			fprintf(fp, "E ship that sank B : E%d\n", sinking_ship_id);
 
 			fclose(fp);
 		}
+		else
+		{
+			printf("Error creating battle_log.txt\n");
+		}
+		return ;
 	}
+	
 	else
 	{
 		float battleship_range = calculate_battleship_range();
@@ -281,36 +314,44 @@ void simulate_part1A()
 				float angle = 45.0f;
 				float velocity = battleship.v_max;
 				
-				float time = (2.0f * velocity * sinf(deg_to_rad(angle)))/GRAVITY;
+				escort_ships[i].time_to_hit = (2.0f * velocity * sinf(deg_to_rad(angle)))/GRAVITY;
 				
-				if(time > battle_end_time)
+				if(escort_ships[i].time_to_hit > battle_end_time)
 				{
-					battle_end_time = time;
+					battle_end_time = escort_ships[i].time_to_hit;
 				}
 				printf("\nNumber of E ships hit : %d\n", total_hits);
-				printf("Battle and time : %.2f seconds\n",battle_end_time);
-				
-				FILE *fp = fopen("battle_results.txt", "w");
+				printf("E%d was hit by Battleship.\n",escort_ships[i].id);
+				printf("Time to hit E%d : %.2f seconds\n",escort_ships[i].id,escort_ships[i].time_to_hit);
+			}
+		}
+		printf("\n NUmber of Escort ships hit : %d\n", total_hits);
+		printf("Battle End Time : %.2f seconds", battle_end_time);
+
+				// Save battleship surivived result
+				FILE *fp = fopen("battle_log.txt", "w");
 				
 				if (fp != NULL)
 				{
 					fprintf(fp, "---- PART 1-A RESULT ----\n");
-					fprintf(fp, "Battleship Status : SURVIVED");
+					fprintf(fp, "Battleship Status : SURVIVED\n");
 					fprintf(fp, "Number of E ships hit : %d\n",total_hits);
 					
 					for (int i = 0; i < num_escorts; i++)
 					{
 						if(escort_ships[i].is_destroyed == 1)
 						{
-							fprintf(fp,"E%d\n", escort_ships[i].id);
+							fprintf(fp,"E%d | Time to hit : %.2f \n", escort_ships[i].id,escort_ships[i].time_to_hit);
 						}
 					}
 					fprintf(fp, "\nBattle End Time: %.2f seconds\n", battle_end_time);
 					
 					fclose(fp);
 				}
-			}
-		}
+				else 
+				{
+					printf("Error creating battle_log.txt\n");
+				}
 	}
 }
 
@@ -325,7 +366,9 @@ void save_final_conditions()
 	}
 	fprintf(fp, "---- FINAL BATTLEFIELD CONDITIONS ----\n");
 	fprintf(fp, "[BATTLESHIP]\n");
+	fprintf(fp,"Type name: %s\n",battleship.type_name);
 	fprintf(fp, "Position: (%.2f, %.2f)\n", battleship.x,battleship.y);
+
 	if (battleship.is_destroyed == 1)
 	{
 		fprintf(fp, "Status : DESTROYED\n");
