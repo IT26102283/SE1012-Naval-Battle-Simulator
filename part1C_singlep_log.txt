@@ -1,15 +1,23 @@
 ---- PART 1-C SINGLE SIMULATION ----
 E1 hit B | Impact: 0.08 | Total damage: 0.08
-E12 hit B | Impact: 0.08 | Total damage: 0.16
-E21 hit B | Impact: 0.08 | Total damage: 0.24
-E24 hit B | Impact: 0.07 | Total damage: 0.31
-B destroyed E1 | Time: 2.88 seconds
-B destroyed E12 | Time: 2.88 seconds
-B destroyed E21 | Time: 2.88 seconds
-B destroyed E24 | Time: 2.88 seconds
-B destroyed E34 | Time: 2.88 seconds
+E2 hit B | Impact: 0.08 | Total damage: 0.16
+E3 hit B | Impact: 0.08 | Total damage: 0.24
+E9 hit B | Impact: 0.07 | Total damage: 0.31
+E10 hit B | Impact: 0.05 | Total damage: 0.36
+B destroyed E1 | Time: 7.64 seconds
+B destroyed E2 | Time: 7.64 seconds
+B destroyed E3 | Time: 7.64 seconds
+B destroyed E4 | Time: 7.64 seconds
+B destroyed E6 | Time: 7.64 seconds
+B destroyed E7 | Time: 7.64 seconds
+B destroyed E9 | Time: 7.64 seconds
+B destroyed E10 | Time: 7.64 seconds
+B destroyed E11 | Time: 7.64 seconds
+B destroyed E12 | Time: 7.64 seconds
+B destroyed E13 | Time: 7.64 seconds
+B destroyed E16 | Time: 7.64 seconds
 
 ---- FINAL RESULT ----
-Total B damage: 0.31
-Destroyed escorts: 5
+Total B damage: 0.36
+Destroyed escorts: 12
 B Status: ALIVE

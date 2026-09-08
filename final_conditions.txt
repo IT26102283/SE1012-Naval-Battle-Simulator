@@ -1,47 +1,22 @@
 ---- FINAL BATTLEFIELD CONDITIONS ----
 [BATTLESHIP]
-Type name: MS King George V
-Position: (215.26, 382.87)
-Status : ALIVE
+Type name: Richelieu
+Position: (352.61, 399.17)
+Status : DESTROYED
 [ESCORT SHIPS]
 E1 | Type: EA | Status: ALIVE
-E2 | Type: EE | Status: ALIVE
-E3 | Type: ED | Status: ALIVE
-E4 | Type: EC | Status: ALIVE
-E5 | Type: EC | Status: ALIVE
-E6 | Type: EB | Status: ALIVE
-E7 | Type: EB | Status: ALIVE
-E8 | Type: EB | Status: ALIVE
-E9 | Type: EE | Status: ALIVE
-E10 | Type: EE | Status: ALIVE
-E11 | Type: EC | Status: ALIVE
-E12 | Type: EA | Status: ALIVE
+E2 | Type: EA | Status: ALIVE
+E3 | Type: EA | Status: ALIVE
+E4 | Type: ED | Status: ALIVE
+E5 | Type: EB | Status: ALIVE
+E6 | Type: ED | Status: ALIVE
+E7 | Type: EC | Status: ALIVE
+E8 | Type: EE | Status: ALIVE
+E9 | Type: EC | Status: ALIVE
+E10 | Type: ED | Status: ALIVE
+E11 | Type: EE | Status: ALIVE
+E12 | Type: EE | Status: ALIVE
 E13 | Type: ED | Status: ALIVE
-E14 | Type: EB | Status: ALIVE
-E15 | Type: EB | Status: ALIVE
-E16 | Type: ED | Status: ALIVE
-E17 | Type: EE | Status: ALIVE
-E18 | Type: EA | Status: ALIVE
-E19 | Type: EE | Status: ALIVE
-E20 | Type: ED | Status: ALIVE
-E21 | Type: EA | Status: ALIVE
-E22 | Type: ED | Status: ALIVE
-E23 | Type: ED | Status: ALIVE
-E24 | Type: EC | Status: DESTROYED
-E25 | Type: EE | Status: ALIVE
-E26 | Type: ED | Status: ALIVE
-E27 | Type: EE | Status: ALIVE
-E28 | Type: EE | Status: ALIVE
-E29 | Type: EE | Status: ALIVE
-E30 | Type: EC | Status: ALIVE
-E31 | Type: EE | Status: ALIVE
-E32 | Type: EC | Status: ALIVE
-E33 | Type: EA | Status: ALIVE
-E34 | Type: EE | Status: ALIVE
-E35 | Type: ED | Status: ALIVE
-E36 | Type: EC | Status: ALIVE
-E37 | Type: ED | Status: ALIVE
-E38 | Type: EB | Status: ALIVE
-E39 | Type: ED | Status: ALIVE
-E40 | Type: EC | Status: ALIVE
-E41 | Type: EE | Status: ALIVE
+E14 | Type: EE | Status: ALIVE
+E15 | Type: EE | Status: ALIVE
+E16 | Type: EB | Status: ALIVE

@@ -1,0 +1,47 @@
+---- PART 1-C PATH SIMULATION ----
+
+Path Point 1
+B Position: (46.00, 240.83)
+e1 hit B | Total damage : 0.08
+e2 hit B | Total damage : 0.16
+e3 hit B | Total damage : 0.24
+e6 hit B | Total damage : 0.29
+e9 hit B | Total damage : 0.36
+e11 hit B | Total damage : 0.40
+e13 hit B | Total damage : 0.45
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+B damage so far: 0.45
+Destroyed escorts so far: 0 
+
+----- FINAL RESULT -----Total B damage : 0.45
+Destroyed escorts : 0 
+B Status : ALIVE
