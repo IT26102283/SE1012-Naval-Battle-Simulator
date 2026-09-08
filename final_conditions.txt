@@ -1,14 +1,51 @@
 ---- FINAL BATTLEFIELD CONDITIONS ----
 [BATTLESHIP]
 Type name: Richelieu
-Position: (73.96, 131.79)
+Position: (400.12, 307.49)
 Status : ALIVE
 [ESCORT SHIPS]
-E1 | Type: EE | Status: ALIVE
-E2 | Type: EC | Status: ALIVE
-E3 | Type: EA | Status: ALIVE
-E4 | Type: ED | Status: ALIVE
-E5 | Type: EA | Status: ALIVE
-E6 | Type: EE | Status: ALIVE
-E7 | Type: EA | Status: ALIVE
-E8 | Type: EC | Status: DESTROYED
+E1 | Type: EB | Status: ALIVE
+E2 | Type: EA | Status: ALIVE
+E3 | Type: EB | Status: ALIVE
+E4 | Type: EE | Status: ALIVE
+E5 | Type: EE | Status: ALIVE
+E6 | Type: EC | Status: ALIVE
+E7 | Type: EB | Status: ALIVE
+E8 | Type: EC | Status: ALIVE
+E9 | Type: EE | Status: ALIVE
+E10 | Type: EB | Status: ALIVE
+E11 | Type: EA | Status: ALIVE
+E12 | Type: ED | Status: ALIVE
+E13 | Type: EC | Status: ALIVE
+E14 | Type: EB | Status: ALIVE
+E15 | Type: ED | Status: ALIVE
+E16 | Type: EC | Status: ALIVE
+E17 | Type: EE | Status: ALIVE
+E18 | Type: EC | Status: ALIVE
+E19 | Type: EB | Status: ALIVE
+E20 | Type: EC | Status: ALIVE
+E21 | Type: ED | Status: ALIVE
+E22 | Type: EC | Status: ALIVE
+E23 | Type: EB | Status: ALIVE
+E24 | Type: EE | Status: ALIVE
+E25 | Type: EA | Status: ALIVE
+E26 | Type: EA | Status: ALIVE
+E27 | Type: EE | Status: ALIVE
+E28 | Type: ED | Status: ALIVE
+E29 | Type: EB | Status: ALIVE
+E30 | Type: EB | Status: ALIVE
+E31 | Type: ED | Status: ALIVE
+E32 | Type: EC | Status: ALIVE
+E33 | Type: ED | Status: ALIVE
+E34 | Type: EA | Status: ALIVE
+E35 | Type: EA | Status: ALIVE
+E36 | Type: EB | Status: ALIVE
+E37 | Type: EC | Status: ALIVE
+E38 | Type: EE | Status: ALIVE
+E39 | Type: EC | Status: ALIVE
+E40 | Type: EA | Status: ALIVE
+E41 | Type: EB | Status: ALIVE
+E42 | Type: ED | Status: ALIVE
+E43 | Type: EC | Status: ALIVE
+E44 | Type: EE | Status: ALIVE
+E45 | Type: ED | Status: ALIVE

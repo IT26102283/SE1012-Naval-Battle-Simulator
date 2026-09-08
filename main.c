@@ -46,6 +46,14 @@ Battleship battleship;
 EscortShip escort_ships[MAX_ESCORT_SHIPS];
 int k;
 
+Battleship starting_battleship;
+EscortShip starting_escorts[MAX_ESCORT_SHIPS];
+int starting_num_escorts;
+
+int escort_attacked[MAX_ESCORT_SHIPS];
+int setup_done = 0;
+
+
 //convert angles from degrees to radians
 float deg_to_rad(float deg)
 {
@@ -58,7 +66,7 @@ float calculate_distance(float x1,float y1,float x2,float y2)
 	return sqrtf((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 }
 
-//calculate maximum rangge of battleship
+//calculate maximum range of battleship
 float calculate_battleship_range()
 {
 	return(battleship.v_max * battleship.v_max) / GRAVITY;
@@ -71,6 +79,50 @@ float calculate_range(float velocity,float angle)
 	return(velocity * velocity * sinf(2.0f * angle_rad)) / GRAVITY;
 }
 
+void save_starting_data()
+{
+	starting_battleship = battleship;
+	starting_num_escorts = num_escorts;
+
+	for (int i =0; i < num_escorts; i++)
+	{
+		starting_escorts[i] = escort_ships[i];
+	}
+}
+
+void reset_battlefield()
+{
+	battleship = starting_battleship;
+	num_escorts = starting_num_escorts;
+
+	for(int i = 0; i < num_escorts; i++)
+	{
+		escort_ships[i] = starting_escorts[i];
+		escort_attacked[i] = 0;
+	}
+}
+
+//find the maximum range for E ships
+float get_escort_max_range(EscortShip escort)
+{
+	float range1,range2,max_range;
+
+	range1 = calculate_range(escort.max_v, escort.min_ang);
+	range2 = calculate_range(escort.max_v, escort.max_ang);
+
+	max_range = range1;
+
+	if(range2>max_range)
+	{
+		max_range = range2;
+	}
+
+	if(escort.min_ang <= 45.0f && escort.max_ang <= 45.0f)
+	{
+		max_range = calculate_range(escort.max_v, 45.0f);
+	}
+	return max_range;
+}
 
 //Initialize user inputs and Setup battlefir=eld coordinates
 void init_simulation()
@@ -246,6 +298,10 @@ void init_simulation()
 	}
 
 	fclose(fp);
+
+	save_starting_data();
+	setup_done = 1;
+
 	printf("\n[SUCCESS] Battlefield setup completed & initial_config.txt saved!\n");
 }
 
@@ -256,6 +312,15 @@ void simulate_part1A()
 	float battle_end_time = 0.0f;
 
 	printf("\n---- BATTLE SIMULATION ----\n");
+
+	for (int point = 0; point <k; point++)
+	{
+		battleship.x = battleship.path_x[point];
+		battleship.y = battleship.path_y[point];
+
+		printf("--SIMULATION 1 - POINT %d\n--", point + 1);
+		printf("Battleship Position : (%.2f, %.2f)\n",battleship.x,battleship.y);
+	}
 
 	//escort ships attack the battleship
 	for (int i=0; i< num_escorts; i++)
@@ -355,6 +420,155 @@ void simulate_part1A()
 	}
 }
 
+void simulate_path()
+{
+	printf("\n----- BATTLESHIP PATH SIMULATION -----\n");
+
+	for (int point = 0; point < k; point++)
+	{
+		battleship.x = battleship.path_x[point];
+		battleship.y = battleship.path_y[point];
+
+		printf("Point %d : Battleship Position = ()%.2f, %.2f)\n", point +1 ,battleship.x,battleship.y);
+	}
+}
+
+void simulate_part1B()
+{
+	FILE *fp;
+	int total_hits = 0;
+
+	if (setup_done == 0)
+	{
+		printf("\nPlease setup the battlefield first.\n");
+		return;
+	}
+
+	reset_battlefield();
+
+	fp = fopen("part1B_log.txt", "w");
+
+	if (fp == NULL)
+	{
+		printf("Error creating part1B_log.txt file\n");
+		return;
+	}
+
+	fprintf(fp, "---- PART 1_B SIMULATION ! ---- \n");
+
+	for(int point = 0; point < k; point++)
+	{
+		printf("\n---- Path Points %d ----\n", point+1);
+
+		battleship.x = battleship.path_x[point];
+		battleship.y = battleship.path_y[point];
+
+		fprintf(fp, "\nPath points %d\n", point+1);
+		fprintf(fp, "B Position: (%.2f, %.2f)\n",battleship.x,battleship.y);
+
+		// E ships Battleship
+		for (int i = 0; i < num_escorts; i++)
+        {
+            float distance;
+            float min_range;
+            float max_range;
+
+            if (escort_ships[i].is_destroyed == 1)
+            {
+                continue;
+            }
+
+            if (escort_attacked[i] == 1)
+            {
+                continue;
+            }
+
+            distance = calculate_distance( battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y);
+            min_range = calculate_range( escort_ships[i].min_v, escort_ships[i].min_ang );
+            max_range = get_escort_max_range(escort_ships[i]);
+
+            if (distance >= min_range && distance <= max_range)
+            {
+                battleship.is_destroyed = 1;
+                escort_attacked[i] = 1;
+
+                printf("B was destroyed by E%d\n", escort_ships[i].id);
+                fprintf(fp, "B was destroyed by E%d\n", escort_ships[i].id);
+
+                break;
+            }
+        }
+
+        /* Stop path simulation if B is destroyed */
+        if (battleship.is_destroyed == 1)
+        {
+            fprintf(fp, "Simulation stopped at path point %d\n",
+                    point + 1);
+            break;
+        }
+
+        /* B attacks escorts inside its range */
+        for (int i = 0; i < num_escorts; i++)
+        {
+            float distance;
+            float b_range;
+
+            if (escort_ships[i].is_destroyed == 1)
+            {
+                continue;
+            }
+
+            distance = calculate_distance( battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y);
+
+            b_range = calculate_battleship_range();
+
+            if (distance <= b_range)
+            {
+                escort_ships[i].is_destroyed = 1;
+                escort_ships[i].time_to_hit = (2.0f * battleship.v_max * sinf(deg_to_rad(45.0f))) / GRAVITY;
+                total_hits++;
+
+                printf("B destroyed E%d\n", escort_ships[i].id);
+
+                fprintf(fp, "B destroyed E%d | Time: %.2f seconds\n", escort_ships[i].id, escort_ships[i].time_to_hit );
+            }
+        }
+        fprintf(fp, "Destroyed escorts so far: %d\n", total_hits);
+    }
+
+    fprintf(fp, "\n---- FINAL RESULT ----\n");
+
+    if (battleship.is_destroyed == 1)
+    {
+        fprintf(fp, "B Status: DESTROYED\n");
+    }
+    else
+    {
+        fprintf(fp, "B Status: ALIVE\n");
+    }
+
+    for (int i = 0; i < num_escorts; i++)
+    {
+        if (escort_ships[i].is_destroyed == 1)
+        {
+            fprintf(fp, "E%d: DESTROYED\n",
+                    escort_ships[i].id);
+        }
+        else
+        {
+            fprintf(fp, "E%d: ALIVE\n",
+                    escort_ships[i].id);
+        }
+    }
+
+    fclose(fp);
+    printf("\n[SUCCESS] Part 1-B saved to part1B_log.txt\n");
+}
+
+
+
+
+
 void save_final_conditions()
 {
 	FILE *fp = fopen("final_conditions.txt", "w");
@@ -397,18 +611,47 @@ void save_final_conditions()
 
 int main()
 {
-    printf("Naval Battle Simulator Initialized. \n");
-    srand(time(NULL));
+	int choice; // for add menu mode
+       	
+	srand(time(NULL));
 
-    //call simulation initialization & file create
-    init_simulation();
+	do
+	{
+		printf("\n ---- NAVAL BATTLE SIMULATION ----\n");
+		printf("01. Setup Battlefield\n");
+		printf("02. Run Part 1-A\n");
+		printf("03. Run Part 1-B Simulation 1\n");
+		printf("04. Exit\n");
+		printf("Enter Your Choice: ");
 
-    //Run Simulation of part 1A Logic
-    simulate_part1A();
+		scanf("%d", &choice);
 
-    //save final conditionts file
-    save_final_conditions();
-
-
-    return 0;
+		switch(choice)
+		{
+			case 1:
+				init_simulation();
+				break;
+			case 2:
+				if(setup_done == 0)
+				{
+					printf("Please Set up First\n");
+				}
+				else
+				{
+					reset_battlefield();
+					simulate_part1A();
+					save_final_conditions();
+				}
+				break;
+			case 3:
+				simulate_part1B();
+				break;
+			case 4:
+				printf("Program closed\n");
+				break;
+			default:
+				printf("Invalid Choice...Please select the another number\n");
+		}
+	}while(choice != 4);
+	return 0;
 }

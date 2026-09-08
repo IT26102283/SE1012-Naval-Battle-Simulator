@@ -1,0 +1,89 @@
+---- PART 1_B SIMULATION ! ---- 
+
+Path points 1
+B Position: (39.63, 166.38)
+Destroyed escorts so far: 0
+
+Path points 2
+B Position: (69.13, 560.37)
+Destroyed escorts so far: 0
+
+Path points 3
+B Position: (434.10, 270.28)
+Destroyed escorts so far: 0
+
+Path points 4
+B Position: (366.19, 529.80)
+Destroyed escorts so far: 0
+
+Path points 5
+B Position: (500.21, 476.39)
+Destroyed escorts so far: 0
+
+Path points 6
+B Position: (306.61, 366.93)
+Destroyed escorts so far: 0
+
+Path points 7
+B Position: (157.45, 368.88)
+Destroyed escorts so far: 0
+
+Path points 8
+B Position: (71.55, 279.13)
+Destroyed escorts so far: 0
+
+Path points 9
+B Position: (232.12, 120.42)
+Destroyed escorts so far: 0
+
+Path points 10
+B Position: (400.12, 307.49)
+Destroyed escorts so far: 0
+
+---- FINAL RESULT ----
+B Status: ALIVE
+E1: ALIVE
+E2: ALIVE
+E3: ALIVE
+E4: ALIVE
+E5: ALIVE
+E6: ALIVE
+E7: ALIVE
+E8: ALIVE
+E9: ALIVE
+E10: ALIVE
+E11: ALIVE
+E12: ALIVE
+E13: ALIVE
+E14: ALIVE
+E15: ALIVE
+E16: ALIVE
+E17: ALIVE
+E18: ALIVE
+E19: ALIVE
+E20: ALIVE
+E21: ALIVE
+E22: ALIVE
+E23: ALIVE
+E24: ALIVE
+E25: ALIVE
+E26: ALIVE
+E27: ALIVE
+E28: ALIVE
+E29: ALIVE
+E30: ALIVE
+E31: ALIVE
+E32: ALIVE
+E33: ALIVE
+E34: ALIVE
+E35: ALIVE
+E36: ALIVE
+E37: ALIVE
+E38: ALIVE
+E39: ALIVE
+E40: ALIVE
+E41: ALIVE
+E42: ALIVE
+E43: ALIVE
+E44: ALIVE
+E45: ALIVE
