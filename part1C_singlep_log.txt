@@ -1,0 +1,15 @@
+---- PART 1-C SINGLE SIMULATION ----
+E1 hit B | Impact: 0.08 | Total damage: 0.08
+E12 hit B | Impact: 0.08 | Total damage: 0.16
+E21 hit B | Impact: 0.08 | Total damage: 0.24
+E24 hit B | Impact: 0.07 | Total damage: 0.31
+B destroyed E1 | Time: 2.88 seconds
+B destroyed E12 | Time: 2.88 seconds
+B destroyed E21 | Time: 2.88 seconds
+B destroyed E24 | Time: 2.88 seconds
+B destroyed E34 | Time: 2.88 seconds
+
+---- FINAL RESULT ----
+Total B damage: 0.31
+Destroyed escorts: 5
+B Status: ALIVE

@@ -2,24 +2,14 @@
 Gun Status : Normal
 
 Path points 1
-B Position: (223.60, 280.88)
+B Position: (487.84, 413.51)
 Destroyed escorts so far: 0
 Gun Status : Normal
 
 Path points 2
-B Position: (267.86, 140.72)
-Destroyed escorts so far: 0
-Gun Status : Normal
-
-Path points 3
-B Position: (293.74, 328.08)
-Destroyed escorts so far: 0
-Gun Status : Normal
-
-Path points 4
-B Position: (416.65, 181.38)
-B was destroyed by E21
-Simulation stopped at path point 4
+B Position: (261.95, 228.09)
+B was destroyed by E18
+Simulation stopped at path point 2
 
 ---- FINAL RESULT ----
 B Status: DESTROYED
@@ -48,3 +38,19 @@ E22: ALIVE
 E23: ALIVE
 E24: ALIVE
 E25: ALIVE
+E26: ALIVE
+E27: ALIVE
+E28: ALIVE
+E29: ALIVE
+E30: ALIVE
+E31: ALIVE
+E32: ALIVE
+E33: ALIVE
+E34: ALIVE
+E35: ALIVE
+E36: ALIVE
+E37: ALIVE
+E38: ALIVE
+E39: ALIVE
+E40: ALIVE
+E41: ALIVE
