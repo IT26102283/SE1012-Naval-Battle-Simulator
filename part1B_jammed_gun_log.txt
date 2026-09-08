@@ -1,0 +1,50 @@
+---- PART 1_B SIMULATION ! ---- 
+Gun Status : Normal
+
+Path points 1
+B Position: (223.60, 280.88)
+Destroyed escorts so far: 0
+Gun Status : Normal
+
+Path points 2
+B Position: (267.86, 140.72)
+Destroyed escorts so far: 0
+Gun Status : Normal
+
+Path points 3
+B Position: (293.74, 328.08)
+Destroyed escorts so far: 0
+Gun Status : Normal
+
+Path points 4
+B Position: (416.65, 181.38)
+B was destroyed by E21
+Simulation stopped at path point 4
+
+---- FINAL RESULT ----
+B Status: DESTROYED
+E1: ALIVE
+E2: ALIVE
+E3: ALIVE
+E4: ALIVE
+E5: ALIVE
+E6: ALIVE
+E7: ALIVE
+E8: ALIVE
+E9: ALIVE
+E10: ALIVE
+E11: ALIVE
+E12: ALIVE
+E13: ALIVE
+E14: ALIVE
+E15: ALIVE
+E16: ALIVE
+E17: ALIVE
+E18: ALIVE
+E19: ALIVE
+E20: ALIVE
+E21: ALIVE
+E22: ALIVE
+E23: ALIVE
+E24: ALIVE
+E25: ALIVE

@@ -124,6 +124,15 @@ float get_escort_max_range(EscortShip escort)
 	return max_range;
 }
 
+float get_battleship_range_after_jam(float min_ang)
+{
+	if (min_ang <= 45.0f)
+	{
+		return calculate_range(battleship.v_max, 45.0f);
+	}
+	return calculate_range(battleship.v_max, min_ang);
+}
+
 //Initialize user inputs and Setup battlefir=eld coordinates
 void init_simulation()
 {
@@ -433,7 +442,7 @@ void simulate_path()
 	}
 }
 
-void simulate_part1B()
+void simulate_part1B(int use_jam, int jam_after, float jam_ang, char file_name[])
 {
 	FILE *fp;
 	int total_hits = 0;
@@ -446,7 +455,7 @@ void simulate_part1B()
 
 	reset_battlefield();
 
-	fp = fopen("part1B_log.txt", "w");
+	fp = fopen(file_name, "w");
 
 	if (fp == NULL)
 	{
@@ -458,13 +467,33 @@ void simulate_part1B()
 
 	for(int point = 0; point < k; point++)
 	{
+		float b_range;
+		int gun_jammed = 0;
+
 		printf("\n---- Path Points %d ----\n", point+1);
 
 		battleship.x = battleship.path_x[point];
 		battleship.y = battleship.path_y[point];
 
+		b_range = calculate_battleship_range();
+
+		if (use_jam ==1 && point + 1 > jam_after)
+		{
+			gun_jammed = 1;
+			b_range = get_battleship_range_after_jam(jam_ang);
+			printf("Gun is Jammed from this point.\n");
+			
+			fprintf(fp, "Gun Status: Jammed | Allowed Angle: %.2f to 90\n", jam_ang);
+		}
+		else
+		{
+			fprintf(fp, "Gun Status : Normal\n");
+		}
+
 		fprintf(fp, "\nPath points %d\n", point+1);
 		fprintf(fp, "B Position: (%.2f, %.2f)\n",battleship.x,battleship.y);
+
+
 
 		// E ships Battleship
 		for (int i = 0; i < num_escorts; i++)
@@ -499,7 +528,7 @@ void simulate_part1B()
             }
         }
 
-        /* Stop path simulation if B is destroyed */
+        // Stop path simulation if B is destroyed 
         if (battleship.is_destroyed == 1)
         {
             fprintf(fp, "Simulation stopped at path point %d\n",
@@ -507,7 +536,7 @@ void simulate_part1B()
             break;
         }
 
-        /* B attacks escorts inside its range */
+        // B attacks escorts inside its range
         for (int i = 0; i < num_escorts; i++)
         {
             float distance;
@@ -519,8 +548,6 @@ void simulate_part1B()
             }
 
             distance = calculate_distance( battleship.x, battleship.y, escort_ships[i].x, escort_ships[i].y);
-
-            b_range = calculate_battleship_range();
 
             if (distance <= b_range)
             {
@@ -562,10 +589,45 @@ void simulate_part1B()
     }
 
     fclose(fp);
-    printf("\n[SUCCESS] Part 1-B saved to part1B_log.txt\n");
+    printf("\n[SUCCESS] Part 1-B result saved to %s\n",file_name);
 }
 
+void run_part1B_jammed_gun()
+{
+	int jam_after;
+	float jam_ang;
+	
+	if (setup_done == 0)
+	{
+		printf("Please setup the battlefield first.\n");
+		return;
+	}
 
+	if (k < 2)
+	{
+		printf("You need at least 2 path points.\n");
+		return;
+	}
+
+	printf("Gun jams after iteration (1 to %d): ", k-1);
+	scanf("%d", &jam_after);
+
+	while (jam_after < 1 || jam_after >= k)
+	{
+		printf("Enter a valid iteration: ");
+		scanf("%d", &jam_after);
+	}
+
+	printf("Minimum firing angle after jam(1-29): ");
+	scanf("%f", &jam_ang);
+
+	while (jam_ang <= 0 || jam_ang >= 30)
+	{
+		printf("Enter an angle from 1- 29 : ");
+		scanf("%f", &jam_ang);
+	}
+	simulate_part1B(1,jam_after,jam_ang,"part1B_jammed_gun_log.txt");
+}
 
 
 
@@ -621,7 +683,8 @@ int main()
 		printf("01. Setup Battlefield\n");
 		printf("02. Run Part 1-A\n");
 		printf("03. Run Part 1-B Simulation 1\n");
-		printf("04. Exit\n");
+		printf("04. Run Part 1-B Simulation 2\n");
+		printf("05. Exit\n");
 		printf("Enter Your Choice: ");
 
 		scanf("%d", &choice);
@@ -644,14 +707,17 @@ int main()
 				}
 				break;
 			case 3:
-				simulate_part1B();
+				simulate_part1B(0,0,0.0f,"part1B_log.txt");
 				break;
 			case 4:
-				printf("Program closed\n");
+				run_part1B_jammed_gun();
+				break;
+			case 5:
+				printf("Program closed.\n");
 				break;
 			default:
 				printf("Invalid Choice...Please select the another number\n");
 		}
-	}while(choice != 4);
+	}while(choice != 5);
 	return 0;
 }
