@@ -1,3 +1,8 @@
- ---- PART 1-A BATTLE RESULT ----
-BattleShip Status : DESTROYED
-E ship that sank B : E2
+---- PART 1-A RESULT ----
+Battleship Status : SURVIVED
+Number of E ships hit : 3
+E28 | Time to hit : 3.32 
+E29 | Time to hit : 3.32 
+E38 | Time to hit : 3.32 
+
+Battle End Time: 3.32 seconds

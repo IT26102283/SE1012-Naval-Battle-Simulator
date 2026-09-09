@@ -1427,8 +1427,40 @@ void simulate_part2B_path()
 	fclose(fp);
 	
 	printf("\n[SUCCESS] Saved to part2B_path_log.txt\n");
+
 }
+
+//for show all results
+void show_stats()
+{
+	char *files[] = {"initial_config.txt", "battle_log.txt", "final_condition.txt", "part1B_log.txt", "part1B_jammed_gun_log.txt", "part1C_single_log.txt", "part1C_path_log.txt", "part2A_single_log.txt", "part2A_path_log.txt", "part2B_single_log.txt", "part2B_path_log.txt"};
+
+	char line[250];
+
+	for (int i = 0; i <11; i++)
+	{
+		FILE *fp = fopen(files[i], "r");
+
+		if (fp == NULL)
+			continue;// skip unrun simulations
+
+				printf("\n---- %s ----\n", files[i]);
+		while(fgets(line, sizeof(line), fp) != NULL)
+			printf("%s",line);
 		
+		fclose(fp);
+	}
+}
+
+//Instruction
+void show_instructions()
+{
+	printf("\n1.Setup first, then select simulations\n");
+	printf("2.B try to destroy Escort ships and survive their attacks.\n");
+	printf("3.Run all runs each added versions from the saved setup.\n");
+	printf("4.Enter jam/reload values when asked\n");
+	printf("5.Statistics displays saved results.\n");
+}
 
 
 
@@ -1472,6 +1504,32 @@ void save_final_conditions()
 	printf("[SUCCESS] final_conditions.txt saved.\n");
 }
 
+//Run full game
+void run_all()
+{
+	if (setup_done == 0)
+	{
+		printf("Please Setup Battlefield\n");
+		return;
+	}
+
+	reset_battlefield();
+	simulate_part1A();
+	save_final_conditions();
+
+	simulate_part1B(0,0,0.0f, "part1B_log.txt");
+
+	if(k >= 2)
+		run_part1B_jammed_gun();
+	
+	simulate_part1C_single_pos();
+	simulate_part1C_path();
+	simulate_part2A_single();
+	simulate_part2A_path();
+	simulate_part2B_single();
+	simulate_part2B_path();
+}
+
 
 int main()
 {
@@ -1492,7 +1550,10 @@ int main()
 		printf("08. Run Part 2-A Path Simulation\n");
 		printf("09. Run Part 2-B Single Position\n");
 		printf("10. Run Part 2-B Path Simulation\n");
-		printf("11. Exit\n");
+		printf("11. Run All Program\n");
+		printf("12. View Instructions\n");
+		printf("13. Statistics\n");
+		printf("14. Exit\n");
 
 		printf("Enter Your Choice: ");
 		scanf("%d", &choice);
@@ -1539,11 +1600,20 @@ int main()
 				simulate_part2B_path();
 				break;
 			case 11:
+				run_all();
+				break;
+			case 12:
+				show_instructions();
+				break;
+			case 13:
+				show_stats();
+				break;
+			case 14:
 				printf("Program closed.\n");
 				break;
 			default:
 				printf("Invalid Choice...Please select the another number\n");
 		}
-	}while(choice != 11);
+	}while(choice != 14);
 	return 0;
 }

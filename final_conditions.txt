@@ -1,22 +1,46 @@
 ---- FINAL BATTLEFIELD CONDITIONS ----
 [BATTLESHIP]
-Type name: Sovetsky Soyuz-class
-Position: (317.16, 344.88)
-Status : DESTROYED
+Type name: MS King George V
+Position: (44.22, 176.79)
+Status : ALIVE
 [ESCORT SHIPS]
-E1 | Type: EB | Status: ALIVE
+E1 | Type: EE | Status: ALIVE
 E2 | Type: EC | Status: ALIVE
-E3 | Type: EC | Status: ALIVE
-E4 | Type: EB | Status: ALIVE
+E3 | Type: EA | Status: ALIVE
+E4 | Type: EA | Status: ALIVE
 E5 | Type: ED | Status: ALIVE
-E6 | Type: EB | Status: ALIVE
+E6 | Type: ED | Status: ALIVE
 E7 | Type: EC | Status: ALIVE
-E8 | Type: ED | Status: ALIVE
-E9 | Type: EC | Status: ALIVE
-E10 | Type: EE | Status: ALIVE
-E11 | Type: EC | Status: ALIVE
-E12 | Type: ED | Status: ALIVE
+E8 | Type: EA | Status: ALIVE
+E9 | Type: EB | Status: ALIVE
+E10 | Type: EC | Status: ALIVE
+E11 | Type: EB | Status: ALIVE
+E12 | Type: EA | Status: ALIVE
 E13 | Type: EB | Status: ALIVE
-E14 | Type: EC | Status: ALIVE
+E14 | Type: EB | Status: ALIVE
 E15 | Type: EC | Status: ALIVE
-E16 | Type: EA | Status: ALIVE
+E16 | Type: EC | Status: ALIVE
+E17 | Type: ED | Status: ALIVE
+E18 | Type: EA | Status: ALIVE
+E19 | Type: EE | Status: ALIVE
+E20 | Type: EB | Status: ALIVE
+E21 | Type: EE | Status: ALIVE
+E22 | Type: ED | Status: ALIVE
+E23 | Type: EB | Status: ALIVE
+E24 | Type: EE | Status: ALIVE
+E25 | Type: ED | Status: ALIVE
+E26 | Type: EE | Status: ALIVE
+E27 | Type: EC | Status: ALIVE
+E28 | Type: EE | Status: DESTROYED
+E29 | Type: EA | Status: DESTROYED
+E30 | Type: EE | Status: ALIVE
+E31 | Type: EC | Status: ALIVE
+E32 | Type: EC | Status: ALIVE
+E33 | Type: EA | Status: ALIVE
+E34 | Type: EE | Status: ALIVE
+E35 | Type: EE | Status: ALIVE
+E36 | Type: EC | Status: ALIVE
+E37 | Type: EC | Status: ALIVE
+E38 | Type: EB | Status: DESTROYED
+E39 | Type: EE | Status: ALIVE
+E40 | Type: EB | Status: ALIVE

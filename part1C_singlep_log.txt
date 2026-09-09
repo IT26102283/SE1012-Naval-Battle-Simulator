@@ -1,8 +1,6 @@
 ---- PART 1-C SINGLE SIMULATION ----
-E16 hit B | Impact: 0.08 | Total damage: 0.08
-B destroyed E16 | Time: 3.32 seconds
 
 ---- FINAL RESULT ----
-Total B damage: 0.08
-Destroyed escorts: 1
+Total B damage: 0.00
+Destroyed escorts: 0
 B Status: ALIVE

@@ -1,17 +1,16 @@
 ---- PART 2-B SINGLE POSITION ----
-B Reload Time :2.00 seconds
+B Reload Time :15.00 seconds
 
 Escort Reload Times : 
-EA: 4.00 seconds
-EB: 5.00 seconds
-EC: 2.00 seconds
-ED: 4.00 seconds
-EE: 5.00 seconds
+EA: 6.00 seconds
+EB: 4.00 seconds
+EC: 3.00 seconds
+ED: 5.00 seconds
+EE: 3.00 seconds
 
-Attack Order: E1E2E3E4E5E6E7E8E9E10E11E12E13E14E15
-t = 14.00 : b destroyed E8
+Attack Order: E1E2E3E4E5E6E7E8E9E10E11E12E13E14E15E16E17E18E19E20E21E22E23E24E25E26E27E28E29E30E31E32E33E34E35E36E37E38E39E40
 
 ---- FINAL RESULTS ----
 B Damage: 0.00
-Destroyed Escort ships : 1
+Destroyed Escort ships : 0
 B Status: ALIVE

@@ -1,5 +1,5 @@
 ---- PART 2-A SINGLE POSITION ----
-B reload Time : 5.00 seconds
+B reload Time : 3.00 seconds
 
 Attack Order : 
 1. E1
@@ -18,10 +18,32 @@ Attack Order :
 14. E14
 15. E15
 16. E16
-t = 0.00 : E16 hit B | Damage : 0.08
- t = 75.00 : B destroyed E16
+17. E17
+18. E18
+19. E19
+20. E20
+21. E21
+22. E22
+23. E23
+24. E24
+25. E25
+26. E26
+27. E27
+28. E28
+29. E29
+30. E30
+31. E31
+32. E32
+33. E33
+34. E34
+35. E35
+36. E36
+37. E37
+38. E38
+39. E39
+40. E40
 
 ---- FINAL RESULT ----
-B damage: 0.08
-Destroyed Escorts: 1
+B damage: 0.00
+Destroyed Escorts: 0
 B Status: ALIVE
