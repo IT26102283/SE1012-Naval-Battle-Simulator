@@ -1,22 +1,22 @@
 ---- FINAL BATTLEFIELD CONDITIONS ----
 [BATTLESHIP]
-Type name: Richelieu
-Position: (352.61, 399.17)
+Type name: Sovetsky Soyuz-class
+Position: (317.16, 344.88)
 Status : DESTROYED
 [ESCORT SHIPS]
-E1 | Type: EA | Status: ALIVE
-E2 | Type: EA | Status: ALIVE
-E3 | Type: EA | Status: ALIVE
-E4 | Type: ED | Status: ALIVE
-E5 | Type: EB | Status: ALIVE
-E6 | Type: ED | Status: ALIVE
+E1 | Type: EB | Status: ALIVE
+E2 | Type: EC | Status: ALIVE
+E3 | Type: EC | Status: ALIVE
+E4 | Type: EB | Status: ALIVE
+E5 | Type: ED | Status: ALIVE
+E6 | Type: EB | Status: ALIVE
 E7 | Type: EC | Status: ALIVE
-E8 | Type: EE | Status: ALIVE
+E8 | Type: ED | Status: ALIVE
 E9 | Type: EC | Status: ALIVE
-E10 | Type: ED | Status: ALIVE
-E11 | Type: EE | Status: ALIVE
-E12 | Type: EE | Status: ALIVE
-E13 | Type: ED | Status: ALIVE
-E14 | Type: EE | Status: ALIVE
-E15 | Type: EE | Status: ALIVE
-E16 | Type: EB | Status: ALIVE
+E10 | Type: EE | Status: ALIVE
+E11 | Type: EC | Status: ALIVE
+E12 | Type: ED | Status: ALIVE
+E13 | Type: EB | Status: ALIVE
+E14 | Type: EC | Status: ALIVE
+E15 | Type: EC | Status: ALIVE
+E16 | Type: EA | Status: ALIVE

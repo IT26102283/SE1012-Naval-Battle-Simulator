@@ -1,47 +1,132 @@
 ---- PART 1-C PATH SIMULATION ----
 
 Path Point 1
-B Position: (46.00, 240.83)
-e1 hit B | Total damage : 0.08
-e2 hit B | Total damage : 0.16
-e3 hit B | Total damage : 0.24
-e6 hit B | Total damage : 0.29
-e9 hit B | Total damage : 0.36
-e11 hit B | Total damage : 0.40
-e13 hit B | Total damage : 0.45
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
-B damage so far: 0.45
-Destroyed escorts so far: 0 
+B Position: (272.99, 261.73)
+B destroyed E14 | Time : 3.32 seconds 
+B damage so far: 0.00
+Destroyed escorts so far: 1 
 
------ FINAL RESULT -----Total B damage : 0.45
-Destroyed escorts : 0 
+Path Point 2
+B Position: (196.12, 168.97)
+e16 hit B | Total damage : 0.08
+B destroyed E16 | Time : 3.32 seconds 
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 3
+B Position: (188.17, 426.84)
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 4
+B Position: (361.34, 369.54)
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 5
+B Position: (50.19, 99.22)
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 6
+B Position: (128.63, 143.44)
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 7
+B Position: (24.88, 216.13)
+B damage so far: 0.08
+Destroyed escorts so far: 2 
+
+Path Point 8
+B Position: (79.52, 386.33)
+B destroyed E10 | Time : 3.32 seconds 
+B damage so far: 0.08
+Destroyed escorts so far: 3 
+
+Path Point 9
+B Position: (341.37, 23.16)
+B damage so far: 0.08
+Destroyed escorts so far: 3 
+
+Path Point 10
+B Position: (342.42, 102.13)
+B damage so far: 0.08
+Destroyed escorts so far: 3 
+
+Path Point 11
+B Position: (297.67, 273.35)
+B destroyed E2 | Time : 3.32 seconds 
+B destroyed E7 | Time : 3.32 seconds 
+B damage so far: 0.08
+Destroyed escorts so far: 5 
+
+Path Point 12
+B Position: (21.01, 251.03)
+B damage so far: 0.08
+Destroyed escorts so far: 5 
+
+Path Point 13
+B Position: (258.82, 360.04)
+e6 hit B | Total damage : 0.14
+B destroyed E6 | Time : 3.32 seconds 
+B damage so far: 0.14
+Destroyed escorts so far: 6 
+
+Path Point 14
+B Position: (411.26, 229.78)
+B damage so far: 0.14
+Destroyed escorts so far: 6 
+
+Path Point 15
+B Position: (210.09, 72.96)
+B damage so far: 0.14
+Destroyed escorts so far: 6 
+
+Path Point 16
+B Position: (368.77, 23.08)
+B destroyed E15 | Time : 3.32 seconds 
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 17
+B Position: (334.69, 104.89)
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 18
+B Position: (192.05, 62.87)
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 19
+B Position: (71.73, 93.39)
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 20
+B Position: (432.40, 121.92)
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 21
+B Position: (192.61, 101.04)
+B damage so far: 0.14
+Destroyed escorts so far: 7 
+
+Path Point 22
+B Position: (265.36, 217.50)
+e8 hit B | Total damage : 0.19
+B destroyed E8 | Time : 3.32 seconds 
+B destroyed E13 | Time : 3.32 seconds 
+B damage so far: 0.19
+Destroyed escorts so far: 9 
+
+Path Point 23
+B Position: (317.16, 344.88)
+B damage so far: 0.19
+Destroyed escorts so far: 9 
+
+----- FINAL RESULT -----Total B damage : 0.19
+Destroyed escorts : 9 
 B Status : ALIVE

@@ -2,9 +2,14 @@
 Gun Status : Normal
 
 Path points 1
-B Position: (46.00, 240.83)
-B was destroyed by E1
-Simulation stopped at path point 1
+B Position: (272.99, 261.73)
+Destroyed escorts so far: 0
+Gun Status : Normal
+
+Path points 2
+B Position: (196.12, 168.97)
+B was destroyed by E16
+Simulation stopped at path point 2
 
 ---- FINAL RESULT ----
 B Status: DESTROYED

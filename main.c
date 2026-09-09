@@ -53,6 +53,7 @@ int starting_num_escorts;
 int escort_attacked[MAX_ESCORT_SHIPS];
 int setup_done = 0;
 float battleship_damage = 0.0f;
+float battleship_reload_time = 1.0f;
 
 //convert angles from degrees to radians
 float deg_to_rad(float deg)
@@ -124,6 +125,53 @@ float get_escort_max_range(EscortShip escort)
 	}
 	return max_range;
 }
+
+//for check e ship can hit B
+int escort_can_hit_b(int index)
+{
+	float distance,min_range,max_range;
+
+	distance = calculate_distance(battleship.x,battleship.y,escort_ships[index].x,escort_ships[index].y);
+	min_range= calculate_range(escort_ships[index].min_v,escort_ships[index].min_ang);
+	max_range =get_escort_max_range(escort_ships[index]);
+
+	if (distance >= min_range && distance <= max_range)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+//attack the biggest threat to B first or closer one if threats are equal
+void create_attack_order(int order[])
+{
+	for (int i = 0; i< num_escorts; i++)
+	{
+		order[i] = i;
+	}
+
+	for (int i = 0; i < num_escorts-1; i++)
+	{
+		for (int j = i+1; j<num_escorts; j++)
+		{
+			int first = order[i];
+			int second = order[i];
+
+			int first_threat = escort_can_hit_b(first);
+			int second_threat = escort_can_hit_b(second);
+
+			float first_distance = calculate_distance(battleship.x,battleship.y,escort_ships[first].x,escort_ships[second].y);
+
+			if (second_threat > first_threat || (second_threat == first_threat && second_threat < first_threat))
+			{
+				int temp = order[i];
+				order[i] = order[j];
+				order[j] = temp;
+			}
+		}
+	}
+}
+
 
 float get_battleship_range_after_jam(float min_ang)
 {
@@ -808,6 +856,7 @@ void simulate_part1C_path()
 			if(escort_ships[i].is_destroyed == 1)
 			{
 				continue;
+			}
 
 			distance = calculate_distance(battleship.x,battleship.y,escort_ships[i].x,escort_ships[i].y);
 
@@ -818,15 +867,15 @@ void simulate_part1C_path()
 				escort_ships[i].is_destroyed = 1;
 				total_hits++;
 
-				escort_ships[i].time_to_hit = (2.0f * battleship.v_max * sinh(deg_to_rad(45.0f)))/GRAVITY;
+				escort_ships[i].time_to_hit = (2.0f * battleship.v_max * sinf(deg_to_rad(45.0f)))/GRAVITY;
 				
 				printf("B destroyed E%d\n", escort_ships[i].id);
 				fprintf(fp, "B destroyed E%d | Time : %.2f seconds \n",escort_ships[i].id,escort_ships[i].time_to_hit);
 			}
-			}
+		}
 			fprintf(fp,"B damage so far: %.2f\n",battleship_damage);
 			fprintf(fp,"Destroyed escorts so far: %d \n", total_hits);
-		}
+	}
 		fprintf(fp,"\n----- FINAL RESULT -----");
 		fprintf(fp,"Total B damage : %.2f\n", battleship_damage);
 		fprintf(fp,"Destroyed escorts : %d \n", total_hits);
@@ -841,8 +890,126 @@ void simulate_part1C_path()
 		}
 		fclose(fp);
 		printf("\n[SUCCESS] Saved to part1C_path_log.txt\n");
-	}
 }
+
+void simulate_part2A_single()
+{
+	FILE *fp;
+	int order[MAX_ESCORT_SHIPS];
+	float current_time = 0.0f;
+	int total_hits = 0;
+
+	if(setup_done == 0)
+	{
+		printf("Please setup the battlefield first.\n");
+		return;
+	}
+
+	printf("Enter B reload time in seconds(1-20): ");
+	scanf("%f", &battleship_reload_time);
+
+	while(battleship_reload_time < 1.0f || battleship_reload_time > 20.0f)
+	{
+		printf("Enter a value from 1-20 : ");
+		scanf("%f",&battleship_reload_time);
+	}
+
+	reset_battlefield();
+
+	fp = fopen("part2A_single_log.txt", "w");
+	if (fp == NULL)
+	{
+		printf("Error creating Part 2-A file.\n");
+		return;
+	}
+
+	fprintf(fp,"---- PART 2-A SINGLE POSITION ----\n");
+	fprintf(fp,"B reload Time : %.2f seconds\n", battleship_reload_time);
+
+	create_attack_order(order);
+
+	fprintf(fp,"\nAttack Order : \n");
+
+	for(int i = 0 ;i < num_escorts; i++)
+	{
+		fprintf(fp,"%d. E%d\n", i+1,escort_ships[order[i]].id);
+	}
+
+	//b attack E ships according to selected strategy
+	for (int i = 0; i < num_escorts; i++)
+	{
+		int ship_index = order[i];
+		float distance, b_range;
+
+		if(battleship.is_destroyed == 1)
+		{
+			break;
+		}
+		if (escort_ships[ship_index].is_destroyed == 1)
+		{
+			continue;
+		}
+
+		distance = calculate_distance(battleship.x,battleship.y,escort_ships[ship_index].x,escort_ships[ship_index].y);
+		b_range = calculate_battleship_range();
+
+		if (distance <= b_range)
+		{
+			escort_ships[ship_index].is_destroyed = 1;
+			total_hits++;
+
+			fprintf(fp,"t = %.2f : B destroyed E%d\n",current_time,escort_ships[ship_index].id);
+			printf("t = %.2f : B destroyed E%d\n",current_time, escort_ships[ship_index].id);
+		}
+
+		// during B reloading remaining E ships can attack B
+		for (int j = 0; j < num_escorts; j++)
+		{
+			if (escort_ships[i].is_destroyed == 1)
+			{
+				continue;
+			}
+
+			if (escort_attacked[j] == 1)
+			{
+				continue;
+			}
+
+			if (escort_can_hit_b(j) == 1)
+			{
+				escort_attacked[j] = 1;
+
+				battleship_damage = battleship_damage = battleship_damage + escort_ships[j].impact_power;
+				
+				fprintf(fp,"t = %.2f : E%d hit B | Damage : %.2f\n ",current_time,escort_ships[j].id,battleship_damage);
+
+				if(battleship_damage >= 1.0f)
+				{
+					battleship.is_destroyed = 1;
+					fprintf(fp,"B was destroyed.\n");
+					break;
+				}
+			}
+		}
+		current_time = current_time + battleship_reload_time;
+	}
+
+	fprintf(fp,"\n---- FINAL RESULT ----\n");
+	fprintf(fp,"B damage: %.2f\n", battleship_damage);
+	fprintf(fp,"Destroyed Escorts: %d\n", total_hits);
+
+	if(battleship.is_destroyed == 1)
+	{
+		fprintf(fp,"B Status: DESTROYED\n");
+	}
+	else
+	{
+		fprintf(fp,"B Status: ALIVE\n");
+	}
+	fclose(fp);
+	printf("\n[SUCCESS] Saved to part2A_single_log.txt\n");
+}
+
 
 
 
@@ -901,7 +1068,8 @@ int main()
 		printf("04. Run Part 1-B Simulation 2\n");
 		printf("05. Run Part 1-C Single Position Damage Model\n");
 		printf("06. Run Part 1-C Path Damage Model\n");
-		printf("07. Exit\n");
+		printf("07. Run Part 2-A Reload Time and Stretegy\n");
+		printf("08. Exit\n");
 		printf("Enter Your Choice: ");
 
 		scanf("%d", &choice);
@@ -936,11 +1104,14 @@ int main()
 				simulate_part1C_path();
 				break;
 			case 7:
+				simulate_part2A_single();
+				break;
+			case 8:
 				printf("Program closed.\n");
 				break;
 			default:
 				printf("Invalid Choice...Please select the another number\n");
 		}
-	}while(choice != 7);
+	}while(choice != 8);
 	return 0;
 }

@@ -1,44 +1,52 @@
 ----INITIAL BATTLEFIELD CONFIGURATION----
-Canvas Size (D): 450.00
+Canvas Size (D): 460.00
 
 [BATTLESHIP]
-Type Code: R
-Type Name: Richelieu
-Gun Name : (15 inch) Mle 1935 gun
-Position : (282.77, 307.65)
-V_max    : 53.00
+Type Code: S
+Type Name: Sovetsky Soyuz-class
+Gun Name : (16 inch) B-37 gun
+Position : (121.69, 139.00)
+V_max    : 23.00
 
 [BATTLESHIP PATH]
-Point 1 : (46.00, 240.83)
-Point 2 : (331.94, 398.33)
-Point 3 : (154.97, 358.68)
-Point 4 : (105.03, 302.27)
-Point 5 : (13.45, 120.90)
-Point 6 : (432.64, 18.62)
-Point 7 : (38.39, 21.51)
-Point 8 : (323.87, 231.58)
-Point 9 : (243.40, 116.12)
-Point 10 : (368.09, 129.52)
-Point 11 : (304.87, 148.34)
-Point 12 : (431.46, 168.69)
-Point 13 : (396.60, 419.33)
-Point 14 : (116.41, 227.64)
-Point 15 : (352.61, 399.17)
+Point 1 : (272.99, 261.73)
+Point 2 : (196.12, 168.97)
+Point 3 : (188.17, 426.84)
+Point 4 : (361.34, 369.54)
+Point 5 : (50.19, 99.22)
+Point 6 : (128.63, 143.44)
+Point 7 : (24.88, 216.13)
+Point 8 : (79.52, 386.33)
+Point 9 : (341.37, 23.16)
+Point 10 : (342.42, 102.13)
+Point 11 : (297.67, 273.35)
+Point 12 : (21.01, 251.03)
+Point 13 : (258.82, 360.04)
+Point 14 : (411.26, 229.78)
+Point 15 : (210.09, 72.96)
+Point 16 : (368.77, 23.08)
+Point 17 : (334.69, 104.89)
+Point 18 : (192.05, 62.87)
+Point 19 : (71.73, 93.39)
+Point 20 : (432.40, 121.92)
+Point 21 : (192.61, 101.04)
+Point 22 : (265.36, 217.50)
+Point 23 : (317.16, 344.88)
 
 [ESCORT SHIPS (Total: 16)]
-ID: 1 | Code: A | Name: 1936A-class Destroyer | Position: (85.29, 398.61) | Range V: [25.42 - 63.60] | Range Angles: [27.82- 47.82] | Impact: 0.08
-ID: 2 | Code: A | Name: 1936A-class Destroyer | Position: (344.97, 325.91) | Range V: [25.08 - 63.60] | Range Angles: [13.15- 33.15] | Impact: 0.08
-ID: 3 | Code: A | Name: 1936A-class Destroyer | Position: (122.87, 179.88) | Range V: [18.95 - 63.60] | Range Angles: [10.75- 30.75] | Impact: 0.08
-ID: 4 | Code: D | Name: F-class Escort Ships | Position: (231.86, 392.84) | Range V: [16.91 - 14.64] | Range Angles: [15.47- 65.47] | Impact: 0.05
-ID: 5 | Code: B | Name: Gabbiano-class Corvette | Position: (202.85, 9.27) | Range V: [19.02 - 8.85] | Range Angles: [24.77- 54.77] | Impact: 0.06
-ID: 6 | Code: D | Name: F-class Escort Ships | Position: (37.94, 183.50) | Range V: [15.97 - 44.32] | Range Angles: [19.43- 69.43] | Impact: 0.05
-ID: 7 | Code: C | Name: Matsu-class Destroyer | Position: (177.12, 236.02) | Range V: [12.49 - 32.42] | Range Angles: [4.81- 29.81] | Impact: 0.07
-ID: 8 | Code: E | Name: Japanese Kaibokan | Position: (269.34, 1.29) | Range V: [17.98 - 12.88] | Range Angles: [9.98- 79.98] | Impact: 0.04
-ID: 9 | Code: C | Name: Matsu-class Destroyer | Position: (200.61, 141.13) | Range V: [10.87 - 42.77] | Range Angles: [13.03- 38.03] | Impact: 0.07
-ID: 10 | Code: D | Name: F-class Escort Ships | Position: (319.70, 241.95) | Range V: [13.63 - 38.66] | Range Angles: [18.91- 68.91] | Impact: 0.05
-ID: 11 | Code: E | Name: Japanese Kaibokan | Position: (50.58, 201.43) | Range V: [14.19 - 38.93] | Range Angles: [0.63- 70.63] | Impact: 0.04
-ID: 12 | Code: E | Name: Japanese Kaibokan | Position: (404.61, 365.66) | Range V: [19.73 - 26.91] | Range Angles: [5.06- 75.06] | Impact: 0.04
-ID: 13 | Code: D | Name: F-class Escort Ships | Position: (53.10, 257.08) | Range V: [15.70 - 16.38] | Range Angles: [0.05- 50.05] | Impact: 0.05
-ID: 14 | Code: E | Name: Japanese Kaibokan | Position: (110.56, 6.91) | Range V: [14.50 - 37.60] | Range Angles: [3.62- 73.62] | Impact: 0.04
-ID: 15 | Code: E | Name: Japanese Kaibokan | Position: (75.88, 72.02) | Range V: [11.06 - 32.35] | Range Angles: [9.96- 79.96] | Impact: 0.04
-ID: 16 | Code: B | Name: Gabbiano-class Corvette | Position: (326.52, 98.06) | Range V: [12.81 - 25.28] | Range Angles: [25.88- 55.88] | Impact: 0.06
+ID: 1 | Code: B | Name: Gabbiano-class Corvette | Position: (143.83, 198.53) | Range V: [16.54 - 10.29] | Range Angles: [1.71- 31.71] | Impact: 0.06
+ID: 2 | Code: C | Name: Matsu-class Destroyer | Position: (299.60, 321.67) | Range V: [14.82 - 20.40] | Range Angles: [6.42- 31.42] | Impact: 0.07
+ID: 3 | Code: C | Name: Matsu-class Destroyer | Position: (328.19, 431.80) | Range V: [19.89 - 17.78] | Range Angles: [15.45- 40.45] | Impact: 0.07
+ID: 4 | Code: B | Name: Gabbiano-class Corvette | Position: (341.85, 186.93) | Range V: [16.09 - 19.55] | Range Angles: [26.97- 56.97] | Impact: 0.06
+ID: 5 | Code: D | Name: F-class Escort Ships | Position: (75.50, 12.94) | Range V: [15.01 - 17.46] | Range Angles: [14.82- 64.82] | Impact: 0.05
+ID: 6 | Code: B | Name: Gabbiano-class Corvette | Position: (225.74, 374.26) | Range V: [18.71 - 19.42] | Range Angles: [8.72- 38.72] | Impact: 0.06
+ID: 7 | Code: C | Name: Matsu-class Destroyer | Position: (339.49, 240.11) | Range V: [17.36 - 0.58] | Range Angles: [21.93- 46.93] | Impact: 0.07
+ID: 8 | Code: D | Name: F-class Escort Ships | Position: (284.24, 206.71) | Range V: [19.64 - 21.92] | Range Angles: [13.27- 63.27] | Impact: 0.05
+ID: 9 | Code: C | Name: Matsu-class Destroyer | Position: (200.87, 325.51) | Range V: [16.07 - 22.28] | Range Angles: [10.40- 35.40] | Impact: 0.07
+ID: 10 | Code: E | Name: Japanese Kaibokan | Position: (90.33, 354.59) | Range V: [15.12 - 11.45] | Range Angles: [2.66- 72.66] | Impact: 0.04
+ID: 11 | Code: C | Name: Matsu-class Destroyer | Position: (11.43, 1.19) | Range V: [12.93 - 4.19] | Range Angles: [6.46- 31.46] | Impact: 0.07
+ID: 12 | Code: D | Name: F-class Escort Ships | Position: (27.39, 14.46) | Range V: [17.62 - 10.12] | Range Angles: [12.06- 62.06] | Impact: 0.05
+ID: 13 | Code: B | Name: Gabbiano-class Corvette | Position: (289.07, 174.94) | Range V: [10.44 - 19.64] | Range Angles: [17.78- 47.78] | Impact: 0.06
+ID: 14 | Code: C | Name: Matsu-class Destroyer | Position: (250.94, 221.02) | Range V: [18.27 - 3.87] | Range Angles: [27.15- 52.15] | Impact: 0.07
+ID: 15 | Code: C | Name: Matsu-class Destroyer | Position: (401.88, 10.75) | Range V: [12.89 - 10.37] | Range Angles: [26.12- 51.12] | Impact: 0.07
+ID: 16 | Code: A | Name: 1936A-class Destroyer | Position: (169.47, 144.47) | Range V: [20.59 - 27.60] | Range Angles: [20.40- 40.40] | Impact: 0.08
