@@ -1293,6 +1293,142 @@ void simulate_part2B_single()
 	printf("\n[SUCCESS] Saved to part2B_single_log.txt\n");
 }
 
+void simulate_part2B_path()
+{
+	FILE *fp;
+	float next_fire_time[MAX_ESCORT_SHIPS] = {0};
+	float current_time = 0.0f;
+	int total_hits = 0;
+
+	if (setup_done == 0)
+	{
+		printf("Please setup the battlefield\n");
+		return;
+	}
+
+	printf("Enter B reload time in seconds (1-20): ");
+	scanf("%f", &battleship_reload_time);
+
+	while (battleship_reload_time < 1.0f || battleship_reload_time > 20.0f)
+	{
+		printf("Enter a value from 1-20 : ");
+		scanf("%f", &battleship_reload_time);
+	}
+
+	reset_battlefield();
+
+	fp = fopen("part2B_path_log.txt","w");
+
+	if (fp == NULL)
+	{
+		printf("Error creating Part2-B path file.\n");
+		return;
+	}
+
+	fprintf(fp,"---- PART 2-B PATH SIMULATION ----\n");
+	fprintf(fp,"B Reload Time : %.2f seconds\n",battleship_reload_time);
+
+	for (int point = 0; point < k; point++)
+	{
+		int order[MAX_ESCORT_SHIPS];
+
+		if(battleship.is_destroyed == 1)
+		{
+			break;
+		}
+
+		battleship.x = battleship.path_x[point];
+		battleship.x = battleship.path_y[point];
+
+		fprintf(fp,"\n---- PATH POINT %d ----\n",point + 1);
+		fprintf(fp,"B Position: (%.2f, %.2f)\n", battleship.x,battleship.y);
+
+		//create attack order for the current B
+		create_attack_order(order);
+
+		fprintf(fp,"Attack Order: ");
+		
+		for (int i = 0; i < num_escorts; i++)
+		{
+			fprintf(fp,"E%d", escort_ships[order[i]].id);
+		}
+
+		fprintf(fp,"\n");
+
+		//B attacks escorts using the stractegy
+		for(int i = 0; i < num_escorts; i++)
+		{
+			int ship_index = order[i];
+			float distance;
+			float b_range;
+
+			if (battleship.is_destroyed == 1)
+			{
+				break;
+			}
+
+			if (escort_ships[ship_index].is_destroyed == 1)
+			{
+				continue;
+			}
+
+			distance = calculate_distance(battleship.x, battleship.y, escort_ships[ship_index].x, escort_ships[ship_index].y);
+
+			b_range = calculate_battleship_range();
+
+			if (distance <= b_range)
+			{
+				escort_ships[ship_index].is_destroyed = 1;
+				total_hits++;
+
+				fprintf(fp,"t = %.2f : B destroyed E%d\n",current_time,escort_ships[ship_index].id);
+			}
+
+			//living escorts can fire after ther reach their reload time
+			for (int j = 0 ; j < num_escorts; j++)
+			{
+				if (escort_ships[j].is_destroyed == 1)
+				{
+					continue;
+				}
+
+				if (current_time >= next_fire_time[j] && escort_can_hit_b(j) == 1)
+				{
+					battleship_damage = battleship_damage + escort_ships[j].impact_power;
+
+					fprintf(fp,"t = %.2f : E%d hit B | Damage : %.2f\n",current_time,escort_ships[j].id,battleship_damage);
+					next_fire_time[j] = current_time + get_escort_reload_time(escort_ships[j].type_code);
+					if (battleship_damage >= 1.0f)
+					{
+						battleship.is_destroyed = 1;
+
+						fprintf(fp,"B eas destroyed.\n");
+						break;
+					}
+				}
+			}
+			current_time = current_time + battleship_reload_time;
+		}
+	}
+	
+	fprintf(fp,"\n ---- FINAL RESULTS -----\n");
+	fprintf(fp,"B Damage: %.2f\n",battleship_damage);
+	fprintf(fp,"Destroyed Escorts: %d\n", total_hits);
+	
+	if (battleship.is_destroyed == 1)
+	{
+		fprintf(fp,"B Status: DESTROYED\n");
+	}
+	else
+	{
+		fprintf(fp,"B Status: ALIVE\n");
+	}
+	
+	fclose(fp);
+	
+	printf("\n[SUCCESS] Saved to part2B_path_log.txt\n");
+}
+		
 
 
 
@@ -1355,7 +1491,8 @@ int main()
 		printf("07. Run Part 2-A Reload Time and Stretegy\n");
 		printf("08. Run Part 2-A Path Simulation\n");
 		printf("09. Run Part 2-B Single Position\n");
-		printf("10. Exit\n");
+		printf("10. Run Part 2-B Path Simulation\n");
+		printf("11. Exit\n");
 
 		printf("Enter Your Choice: ");
 		scanf("%d", &choice);
@@ -1399,11 +1536,14 @@ int main()
 				simulate_part2B_single();
 				break;
 			case 10:
+				simulate_part2B_path();
+				break;
+			case 11:
 				printf("Program closed.\n");
 				break;
 			default:
 				printf("Invalid Choice...Please select the another number\n");
 		}
-	}while(choice != 10);
+	}while(choice != 11);
 	return 0;
 }

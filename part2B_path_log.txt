@@ -1,0 +1,29 @@
+---- PART 2-B PATH SIMULATION ----
+B Reload Time : 16.00 seconds
+
+---- PATH POINT 1 ----
+B Position: (605.30, 182.06)
+Attack Order: E1E2E3E4E5E6E7E8E9E10E11E12E13E14E15E16E17E18E19E20E21E22E23E24E25E26E27E28E29E30E31E32E33E34E35E36E37E38E39E40
+
+---- PATH POINT 2 ----
+B Position: (149.44, 182.06)
+Attack Order: E1E2E3E4E5E6E7E8E9E10E11E12E13E14E15E16E17E18E19E20E21E22E23E24E25E26E27E28E29E30E31E32E33E34E35E36E37E38E39E40
+t = 640.00 : E21 hit B | Damage : 0.08
+t = 656.00 : E21 hit B | Damage : 0.16
+t = 672.00 : E21 hit B | Damage : 0.24
+t = 688.00 : E21 hit B | Damage : 0.32
+t = 704.00 : E21 hit B | Damage : 0.40
+t = 720.00 : E21 hit B | Damage : 0.48
+t = 736.00 : E21 hit B | Damage : 0.56
+t = 752.00 : E21 hit B | Damage : 0.64
+t = 768.00 : E21 hit B | Damage : 0.72
+t = 784.00 : E21 hit B | Damage : 0.80
+t = 800.00 : E21 hit B | Damage : 0.88
+t = 816.00 : E21 hit B | Damage : 0.96
+t = 832.00 : E21 hit B | Damage : 1.04
+B eas destroyed.
+
+ ---- FINAL RESULTS -----
+B Damage: 1.04
+Destroyed Escorts: 0
+B Status: DESTROYED
